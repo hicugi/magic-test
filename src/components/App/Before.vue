@@ -33,4 +33,7 @@ button
   transform: translateX(-50%)
   font-size: 18px
   line-height: 1.5em
+
+#app
+  height: 100%
 </style>

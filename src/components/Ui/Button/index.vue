@@ -19,7 +19,7 @@ const computedClass = computed(() =>
 </script>
 
 <template>
-  <button :class="computedClass" v-on="$listeners">Начать</button>
+  <button :class="computedClass"><slot /></button>
 </template>
 
 <style lang="sass">

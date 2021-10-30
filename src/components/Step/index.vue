@@ -5,7 +5,7 @@ import ThisAuth from "./Auth.vue";
 
 const className = "c-step";
 const items = ["beginning", "auth"];
-const activeItem = ref(items[0]);
+const activeItem = ref(items[1]);
 
 const getItemClass = (v) =>
   ["", `_${v}`, activeItem.value === v && "_show"]
@@ -20,6 +20,14 @@ const nextStep = () => {
 
   activeItem.value = nextItem;
 };
+const prevStep = () => {
+  const nextIndex = items.findIndex((v) => v === activeItem.value);
+  const nextItem = items[nextIndex - 1];
+
+  if (!nextItem) return;
+
+  activeItem.value = nextItem;
+};
 </script>
 
 <template>
@@ -28,7 +36,7 @@ const nextStep = () => {
       <ThisBeginning @submit="nextStep" />
     </div>
     <div :class="getItemClass('auth')">
-      <ThisAuth />
+      <ThisAuth @back="prevStep" />
     </div>
   </div>
 </template>

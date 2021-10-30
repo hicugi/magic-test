@@ -1,4 +1,5 @@
 <script setup>
+import Logo from "../Logo.vue";
 import UiButton from "../Ui/Button/index.vue";
 
 const className = "c-setpBeginning";
@@ -7,13 +8,7 @@ const className = "c-setpBeginning";
 <template>
   <div :class="className">
     <header :class="`${className}__header`">
-      <div :class="`${className}-logo`">
-        <img
-          :class="`${className}-logo__img`"
-          src="/assets/img/logo.svg"
-          alt="MagicTest logo"
-        />
-      </div>
+      <Logo />
     </header>
 
     <div :class="`${className}__body`">
@@ -37,12 +32,9 @@ const className = "c-setpBeginning";
   padding-left: $gap
   padding-right: $gap
   max-width: #{ $width + $gap * 2 }
-  
-  &__header
-    margin-bottom: 80px
 
-  &-logo__img
-    display: block
+  &__header
+    margin-bottom: 70px
 
   &__body
     max-width: 900px
