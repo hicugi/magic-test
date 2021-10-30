@@ -8,8 +8,9 @@ import UiFormDate from "./Ui/Form/Date.vue";
 const className = "c-authForm";
 
 const field = ref({
+  picture: undefined,
   sex: "0",
-  date: {},
+  date: undefined,
 });
 
 const getComputedModel = (key) =>
@@ -23,6 +24,7 @@ const getComputedModel = (key) =>
     },
   });
 
+const pictureModel = getComputedModel("picture");
 const sexModel = getComputedModel("sex");
 const dateModel = getComputedModel("date");
 </script>
@@ -32,7 +34,7 @@ const dateModel = getComputedModel("date");
     <form :class="`${className}__inner`">
       <h2 :class="`${className}__title`">Заполните все поля</h2>
 
-      <UiFormFile :class="`${className}__file`" />
+      <UiFormFile :class="`${className}__file`" v-model="pictureModel" />
       <UiFormSex :class="`${className}__sex`" v-model="sexModel" />
       <UiFormDate v-model="dateModel" />
     </form>
