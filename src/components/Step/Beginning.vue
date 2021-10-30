@@ -24,14 +24,13 @@ const className = "c-setpBeginning";
 </template>
 
 <style lang="sass">
+@import "../../sass/_variables.sass"
+
 .c-setpBeginning
-  $width: 1086px
-  $gap: 15px
   margin-left: auto
   margin-right: auto
-  padding-left: $gap
-  padding-right: $gap
-  max-width: #{ $width + $gap * 2 }
+  padding: $container-gap
+  max-width: $container-width
 
   &__header
     margin-bottom: 70px

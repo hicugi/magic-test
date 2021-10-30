@@ -11,16 +11,31 @@ const className = "ui-container";
 </template>
 
 <style lang="sass">
-.ui-container
-  padding: 0 30px
+@import "../../sass/_variables.sass"
 
-  &__inner
-    margin-left: auto
-    margin-right: auto
-    padding: 70px
-    border-radius: 30px
-    max-width: 1226px
+.ui-container
+  position: relative
+  margin-left: auto
+  margin-right: auto
+  padding: $container-gap
+  max-width: $container-width
+  animation: uiContainerAnim
+
+  &::before
+    z-index: -1
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
     height: 100%
-    flex-grow: 1
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(237, 241, 247, 0.5) 100%)
+    animation: uiContainerAnim .2s linear
+    will-change: opacify
+    content: ''
+
+    @keyframes uiContainerAnim
+      from
+        opacity: 0
+      to
+        opacity: 1
 </style>

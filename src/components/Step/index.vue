@@ -49,8 +49,7 @@ const prevStep = () => {
   &-item
     $display: flex
 
-    padding-top: $gap
-    padding-bottom: $gap
+    padding: #{$gap} 5px
     height: 100%
     flex-grow: 1
     display: none
@@ -64,4 +63,10 @@ const prevStep = () => {
       display: none
     &_show
       display: $display
+
+  @media (min-height: 1024px)
+    &-item
+      $gap: 70px
+      padding-top: $gap
+      padding-bottom: $gap
 </style>
