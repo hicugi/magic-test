@@ -5,10 +5,8 @@ import Step from "./components/Step/index.vue";
 </script>
 
 <template>
-  <div class="asd">
-    <AppBefore />
-    <AppBackground />
+  <AppBefore />
+  <AppBackground />
 
-    <Step />
-  </div>
+  <Step />
 </template>
