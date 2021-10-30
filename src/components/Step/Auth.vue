@@ -2,6 +2,7 @@
 import UiContainer from "../Ui/Container.vue";
 import Logo from "../Logo.vue";
 import ThisBtnBack from "./BtnBack.vue";
+import AuthForm from "../AuthForm.vue";
 
 const className = "c-stepAuth";
 
@@ -15,7 +16,9 @@ const getColumnClass = (v) =>
       <div :class="getColumnClass('side')">
         <Logo />
       </div>
-      <div :class="getColumnClass('middle')"></div>
+      <div :class="getColumnClass('middle')">
+        <AuthForm @submit="$emit('submit')" />
+      </div>
       <div :class="getColumnClass('side2')">
         <ThisBtnBack @click="$emit('back')" />
       </div>
@@ -30,11 +33,13 @@ const getColumnClass = (v) =>
     display: flex
 
     &__col
-      width: 100%
-      max-width: 253px
-
       &_middle
-        max-width: 580px
+        flex-grow: 1
+
+      &_side,
+      &_side2
+        width: 100%
+        max-width: 253px
 
       &_side2
         display: flex

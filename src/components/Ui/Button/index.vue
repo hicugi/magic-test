@@ -5,10 +5,6 @@ import { computed } from "@vue/reactivity";
 const className = "ui-btn";
 const props = defineProps({
   primary: Boolean,
-  variant: {
-    type: String,
-    default: "primary",
-  },
 });
 
 const computedClass = computed(() =>
