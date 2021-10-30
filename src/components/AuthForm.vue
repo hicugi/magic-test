@@ -3,19 +3,28 @@ import { computed, ref } from "@vue/reactivity";
 import UiBlock from "./Ui/Block.vue";
 import UiFormFile from "./Ui/Form/File.vue";
 import UiFormSex from "./Ui/Form/Sex/index.vue";
+import UiFormDate from "./Ui/Form/Date.vue";
 
 const className = "c-authForm";
 
 const field = ref({
-  sex: '0',
+  sex: "0",
+  date: {},
 });
 
-const sexModel = computed({
-  get: () => field.value.sex,
-  set: (v) => {
-    field.value.sex = v;
-  },
-});
+const getComputedModel = (key) =>
+  computed({
+    get: () => field.value[key],
+    set: (newValue) => {
+      field.value = {
+        ...field.value,
+        [key]: newValue,
+      };
+    },
+  });
+
+const sexModel = getComputedModel("sex");
+const dateModel = getComputedModel("date");
 </script>
 
 <template>
@@ -24,13 +33,16 @@ const sexModel = computed({
       <h2 :class="`${className}__title`">Заполните все поля</h2>
 
       <UiFormFile :class="`${className}__file`" />
-      <UiFormSex v-model="sexModel" />
+      <UiFormSex :class="`${className}__sex`" v-model="sexModel" />
+      <UiFormDate v-model="dateModel" />
     </form>
   </UiBlock>
 </template>
 
 <style lang="sass">
 .c-authForm
+  $margin: 30px
+
   padding: 40px 15px 45px
   border-radius: 30px
 
@@ -40,12 +52,15 @@ const sexModel = computed({
     max-width: 400px
 
   &__title
-    margin: 0 0 30px
+    margin: 0 0 #{$margin}
     font-size: 32px
     font-weight: 700
     line-height: 1.2em
     text-align: center
 
   &__file
-    margin: 0 auto 30px
+    margin: 0 auto #{$margin}
+  &__sex,
+  &__date
+    margin-bottom: $margin
 </style>
