@@ -5,10 +5,11 @@ import { computed } from "@vue/reactivity";
 const className = "ui-btn";
 const props = defineProps({
   primary: Boolean,
+  block: Boolean,
 });
 
 const computedClass = computed(() =>
-  ["", props.primary && `_primary`]
+  ["", props.primary && `_primary`, props.block && `_block`]
     .filter((v) => typeof v === "string")
     .map((v) => [className, v].join(""))
 );
@@ -31,6 +32,10 @@ const computedClass = computed(() =>
 
   &:focus
     outline: none
+
+  &_block
+    width: 100%
+    display: block
 
   &_primary
     background-color: $color-primary

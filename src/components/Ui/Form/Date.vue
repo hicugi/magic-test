@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from "@vue/reactivity";
+import helpMonths from "../../../helpers/months";
 import UiFormSelect from "./Select.vue";
 
 const className = "ui-formDate";
@@ -8,9 +9,7 @@ const [days, months, years] = (() => [
   Array(31)
     .fill("")
     .map((_, i) => i + 1),
-  "январь,февраль,март,апрель,май,июнь,июль,август,сентябрь,октябрь,ноябрь,декабр".split(
-    ","
-  ),
+  [...helpMonths],
   Array(62)
     .fill("")
     .map((_, i) => 15 - i)

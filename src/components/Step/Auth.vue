@@ -6,6 +6,8 @@ import AuthForm from "../AuthForm.vue";
 
 const className = "c-stepAuth";
 
+const emit = defineEmits(["submit-data"]);
+
 const getColumnClass = (v) =>
   ["", `_${v}`].map((v) => [className, "-row__col", v].join(""));
 </script>
@@ -17,7 +19,7 @@ const getColumnClass = (v) =>
         <Logo />
       </div>
       <div :class="getColumnClass('middle')">
-        <AuthForm @submit="$emit('submit')" />
+        <AuthForm @submit-data="(data) => emit('submit-data', data)" />
       </div>
       <div :class="getColumnClass('side2')">
         <ThisBtnBack @click="$emit('back')" />

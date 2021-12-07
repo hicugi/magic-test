@@ -2,10 +2,13 @@
 import { ref } from "@vue/reactivity";
 import ThisBeginning from "./Beginning.vue";
 import ThisAuth from "./Auth.vue";
+import ThisQuiz from "./Quiz/index.vue";
 
 const className = "c-step";
-const items = ["beginning", "auth"];
-const activeItem = ref(items[1]);
+const items = ["beginning", "auth", "quiz"];
+const activeItem = ref(items[2]);
+
+const userInfo = ref({});
 
 const getItemClass = (v) =>
   ["", `_${v}`, activeItem.value === v && "_show"]
@@ -28,6 +31,11 @@ const prevStep = () => {
 
   activeItem.value = nextItem;
 };
+
+const handleAuthSubmit = (data) => {
+  userInfo.value = data;
+  nextStep();
+};
 </script>
 
 <template>
@@ -35,8 +43,13 @@ const prevStep = () => {
     <div :class="getItemClass('beginning')">
       <ThisBeginning @submit="nextStep" />
     </div>
+
     <div :class="getItemClass('auth')">
-      <ThisAuth @back="prevStep" />
+      <ThisAuth @back="prevStep" @submit-data="handleAuthSubmit" />
+    </div>
+
+    <div :class="getItemClass('quiz')">
+      <ThisQuiz @back="prevStep" />
     </div>
   </div>
 </template>
