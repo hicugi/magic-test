@@ -4,9 +4,13 @@ import ThisBeginning from "./Beginning.vue";
 import ThisAuth from "./Auth.vue";
 import ThisQuiz from "./Quiz/index.vue";
 
+const env = import.meta.env;
+
 const className = "c-step";
 const items = ["beginning", "auth", "quiz"];
-const activeItem = ref(items[2]);
+
+const initialStepIndex = Number(env.VITE_ACTIVE_STEP) || 0;
+const activeItem = ref(items[initialStepIndex]);
 
 const userInfo = ref({});
 
