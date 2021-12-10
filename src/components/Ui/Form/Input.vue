@@ -16,10 +16,10 @@ const handleInput = (e) => {
 <style lang="sass">
 .ui-formInput
   border: 2px solid #E2E9F5
-  border-radius: 10px
-  padding: 16px 26px 15px
+  border-radius: 8px
+  padding: 10px 22px 10px
   background: #EDF1F7
   color: #646876
-  font-size: 24px
+  font-size: 20px
   line-height: 1.2em
 </style>

@@ -49,12 +49,12 @@ const handleChange = ({ target }) => {
   &__controller
     position: relative
     border: none
-    padding: 16px 20px 15px 15px
+    padding: 12px 20px 12px 15px
     width: calc(100% + 20px)
     display: block
     background: none
     color: #646876
-    font-size: 24px
+    font-size: 20px
     line-height: 1.2em
     text-align: center
 
@@ -71,5 +71,5 @@ const handleChange = ({ target }) => {
 
 
   &, &__controller
-    border-radius: 10px
+    border-radius: 8px
 </style>

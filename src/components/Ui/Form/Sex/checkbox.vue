@@ -33,7 +33,7 @@ const props = defineProps({
 
 .ui-formSexCheckbox
   $self: &
-  $size: 80px
+  $size: 64px
 
   position: relative
   width: $size

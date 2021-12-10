@@ -43,7 +43,10 @@ const getColumnClass = (v) =>
         width: 100%
         max-width: 253px
 
+      &_side
+        opacity: 0.5
       &_side2
+        padding-top: 15px
         display: flex
         justify-content: flex-end
 </style>

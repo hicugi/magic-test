@@ -58,9 +58,9 @@ const handleSubmit = () => {
 
 <style lang="sass">
 .c-authForm
-  $margin: 30px
+  $margin: 24px
 
-  padding: 40px 15px 45px
+  padding: 38px 15px 45px
   border-radius: 30px
 
   &__inner
@@ -70,10 +70,12 @@ const handleSubmit = () => {
 
   &__title
     margin: 0 0 #{$margin}
-    font-size: 32px
+    color: #646876
+    font-size: 26px
     font-weight: 700
-    line-height: 1.2em
+    line-height: 34px
     text-align: center
+    text-transform: uppercase
 
   &__file
     margin: 0 auto #{$margin}
@@ -84,7 +86,7 @@ const handleSubmit = () => {
     $gap: 10px
 
     margin-left: -$gap
-    margin-rigth: -$gap
+    margin-right: -$gap
     margin-bottom: $margin
     display: flex
 

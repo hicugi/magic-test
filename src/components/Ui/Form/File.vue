@@ -35,7 +35,7 @@ const handleChange = ({ target }) => {
 
 <style lang="sass">
 .ui-formFile
-  $size: 200px
+  $size: 166px
 
   position: relative
   border: 2px solid #E2E9F5
