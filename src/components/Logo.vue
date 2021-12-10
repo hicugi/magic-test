@@ -1,16 +1,22 @@
 <script setup>
-const className = "c-log";
+const className = "c-logo";
 </script>
 
 <template>
-  <img
-    :class="`${className}__img`"
-    src="/assets/img/logo.svg"
-    alt="MagicTest logo"
-  />
+  <div :class="className">
+    <img
+      :class="`${className}__img`"
+      src="/assets/img/logo.svg"
+      alt="MagicTest logo"
+    />
+  </div>
 </template>
 
 <style lang="sass">
 .c-logo
-  display: block
+  width: 176px
+
+  &__img
+    max-width: 100%
+    display: block
 </style>

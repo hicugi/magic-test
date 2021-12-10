@@ -60,13 +60,13 @@ const handleAuthSubmit = (data) => {
 
 <style lang="sass">
 .c-step
-  $gap: 30px
+  $gap: 20px
   height: 100%
 
   &-item
     $display: flex
 
-    padding: #{$gap} 5px
+    padding: #{$gap} 20px
     height: 100%
     flex-grow: 1
     display: none

@@ -23,10 +23,10 @@ const computedClass = computed(() =>
 @import "../../../sass/_variables.sass"
 
 .ui-btn
-  padding: 21px 46px 20px
+  padding: 18px 40px 18px
   border: none
   border-radius: 10px
-  font-size: 24px
+  font-size: 20px
   font-weight: 700
   line-height: 1.2em
 
