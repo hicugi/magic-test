@@ -28,8 +28,8 @@ const handleChange = ({ target }) => {
       v-model="modelValue"
       @change="handleChange"
     >
-      <option v-if="props.label" value="" disabled>{{ props.label }}</option>
-      <option v-for="item in props.options">{{ item }}</option>
+      <option v-if="label" value="" disabled>{{ label }}</option>
+      <option v-for="item in options">{{ item }}</option>
     </select>
     <span />
   </div>

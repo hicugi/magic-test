@@ -18,6 +18,7 @@ const handleInput = (e) => {
   border: 2px solid #E2E9F5
   border-radius: 8px
   padding: 10px 22px 10px
+  width: 100%
   background: #EDF1F7
   color: #646876
   font-size: 20px

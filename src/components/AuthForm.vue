@@ -5,6 +5,7 @@ import UiFormFile from "./Ui/Form/File.vue";
 import UiFormSex from "./Ui/Form/Sex/index.vue";
 import UiFormDate from "./Ui/Form/Date.vue";
 import UiFormInput from "./Ui/Form/Input.vue";
+import UiFormSelectZodiac from "./Ui/Form/Select/Zodiac.vue";
 import UiButton from "./Ui/Button/index.vue";
 
 const className = "c-authForm";
@@ -27,6 +28,7 @@ const pictureModel = getComputedModel("picture");
 const sexModel = getComputedModel("sex");
 const dateModel = getComputedModel("date");
 const nameModel = getComputedModel("name");
+const zodiacModel = getComputedModel("zodiac");
 
 const handleSubmit = () => {
   const data = JSON.parse(JSON.stringify(field.value));
@@ -45,10 +47,12 @@ const handleSubmit = () => {
       <UiFormDate :class="`${className}__field`" v-model="dateModel" />
 
       <div :class="`${className}-row`">
-        <div :class="`${className}-row__col`">
-          <UiFormInput v-model="nameModel" />
+        <div :class="[`${className}-row__col`, `${className}-row__col_name`]">
+          <UiFormInput v-model="nameModel" placeholder="Имя" />
         </div>
-        <div :class="`${className}-row__col`"></div>
+        <div :class="[`${className}-row__col`, `${className}-row__col_zodiac`]">
+          <UiFormSelectZodiac v-model="zodiacModel" />
+        </div>
       </div>
 
       <UiButton type="submit" block primary>Продолжить</UiButton>
@@ -58,7 +62,7 @@ const handleSubmit = () => {
 
 <style lang="sass">
 .c-authForm
-  $margin: 24px
+  $margin: 30px
 
   padding: 38px 15px 45px
   border-radius: 30px
@@ -83,14 +87,8 @@ const handleSubmit = () => {
     margin-bottom: $margin
 
   &-row
-    $gap: 10px
-
-    margin-left: -$gap
-    margin-right: -$gap
     margin-bottom: $margin
-    display: flex
-
-    &__col
-      padding-left: $gap
-      padding-rigth: $gap
+    display: grid
+    grid-gap: 20px
+    grid-template: ". ." / 1fr 80px
 </style>

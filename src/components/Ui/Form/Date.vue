@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from "@vue/reactivity";
 import helpMonths from "../../../helpers/months";
-import UiFormSelect from "./Select.vue";
+import UiFormSelect from "./Select/index.vue";
 
 const className = "ui-formDate";
 
