@@ -90,5 +90,5 @@ const handleSubmit = () => {
     margin-bottom: $margin
     display: grid
     grid-gap: 20px
-    grid-template: ". ." / 1fr 80px
+    grid-template: ". ." / 1fr 118px
 </style>

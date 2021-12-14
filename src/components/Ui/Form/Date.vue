@@ -5,16 +5,15 @@ import UiFormSelect from "./Select/index.vue";
 
 const className = "ui-formDate";
 
+const currentYear = new Date().getFullYear() - 6;
 const [days, months, years] = (() => [
   Array(31)
     .fill("")
     .map((_, i) => i + 1),
   [...helpMonths],
-  Array(62)
+  Array(94)
     .fill("")
-    .map((_, i) => 15 - i)
-    .map((v) => (v >= 0 ? v : 100 - Math.abs(v)))
-    .map((v) => (String(v).length === 1 ? [0, v].join("") : v)),
+    .map((_, i) => currentYear - i),
 ])();
 
 const props = defineProps({
@@ -50,13 +49,13 @@ const yearModel = getComputedModel("year");
 
 <template>
   <div :class="className">
-    <div :class="[`${className}__col`, `${className}__col_day`]">
+    <div :class="`${className}__col`">
       <UiFormSelect label="Д" :options="days" v-model="dayModel" />
     </div>
-    <div :class="[`${className}__col`, `${className}__col_month`]">
+    <div :class="`${className}__col`">
       <UiFormSelect label="месяц" :options="months" v-model="monthModel" />
     </div>
-    <div :class="[`${className}__col`, `${className}__col_year`]">
+    <div :class="`${className}__col`">
       <UiFormSelect label="Год" :options="years" v-model="yearModel" />
     </div>
   </div>
@@ -64,20 +63,7 @@ const yearModel = getComputedModel("year");
 
 <style lang="sass">
 .ui-formDate
-  $gap: 10px
-
-  display: flex
-  margin-left: -$gap
-  margin-right: -$gap
-
-  &__col
-    padding-left: $gap
-    padding-right: $gap
-
-    &_day,
-    &_year
-      width: #{80px + $gap * 2}
-
-    &_month
-      flex-grow: 1
+  display: grid
+  grid-template: "day month year" / 64px 1fr 118px
+  grid-gap: 20px
 </style>

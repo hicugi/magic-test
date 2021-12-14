@@ -50,7 +50,7 @@ const handleChange = ({ target }) => {
     position: relative
     border: none
     padding: 12px 20px 12px 15px
-    width: calc(100% + 20px)
+    width: calc(100% + 16px)
     display: block
     background: none
     color: #646876
