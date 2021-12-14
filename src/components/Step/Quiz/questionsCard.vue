@@ -7,31 +7,15 @@ const props = defineProps({
   description: String,
   options: Array,
 
-  id: Number,
   footerTitle: {
     type: String,
     default: "",
   },
-  lastOrder: Number,
-
-  passed: Boolean,
-  active: Boolean,
 });
 const requiredError = ref(false);
 const emit = defineEmits(["submit-data"]);
 
 const className = "c-stepQuizQuestionsCard";
-
-const computedClass = computed(() =>
-  [
-    "",
-    props.active && "--active",
-    props.passed && "--passed",
-    props.passed && `--passed_${props.lastOrder}`,
-  ]
-    .filter((v) => typeof v === "string")
-    .map((v) => [className, v].join(""))
-);
 
 const selectedIndex = ref();
 const handleItemChnage = (index) => {
@@ -44,15 +28,12 @@ const handleSubmit = () => {
     return;
   }
 
-  emit("submit-data", {
-    id: props.id,
-    value: selectedIndex.value,
-  });
+  emit("submit-data", selectedIndex.value);
 };
 </script>
 
 <template>
-  <form :class="computedClass" @submit.prevent="handleSubmit">
+  <form :class="className" @submit.prevent="handleSubmit">
     <div :class="`${className}__body`">
       <h3 :class="`${className}__title`" v-text="title" />
       <p :class="`${className}__description`" v-text="description" />
@@ -87,15 +68,10 @@ const handleSubmit = () => {
 </template>
 
 <style lang="sass">
-@import '@/sass/_variables.sass'
+@import '../../../sass/_variables.sass'
 
 .c-stepQuizQuestionsCard
   $self: &
-
-  position: relative
-  display: none
-  transition: ease-out .2s
-  will-change: transform
 
   &__body,
   &-footer
@@ -214,25 +190,10 @@ const handleSubmit = () => {
     padding-top: 15px
     padding-bottom: 10px
 
-  &--active
-    display: block
-  &--passed
-    position: absolute
-    transform-origin: top center
-    transform: scale(0.923371) translateY(-28px)
-    width: 100%
-    display: block
-    #{$self}
-      &__body,
-      &-footer
-        border-color: $color-white
-        background-color: #E4EAF2
-      &-footer
-        display: none
-    // self end
-
-    &_1
-      transform: scale(0.961685) translateY(-14px)
-    &_2
-      transform: scale(0.923371) translateY(-28px)
+  &[disabled]
+    #{$self}__body
+      border-color: $color-white
+      background-color: #E4EAF2
+    #{$self}-footer
+      display: none
 </style>

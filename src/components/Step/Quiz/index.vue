@@ -1,61 +1,18 @@
 <script setup>
-import { ref } from "@vue/reactivity";
+import { computed, ref } from "@vue/reactivity";
 
 import UiContainer from "../../Ui/Container.vue";
 import Logo from "../../Logo.vue";
 import StepBtnBack from "../BtnBack.vue";
 import ThisProgress from "./progress.vue";
 import ThisQuestionsCard from "./questionsCard.vue";
+import items from "./questions.js";
 
 const className = "c-stepQuiz";
 
-const emit = defineEmits(["submit-data", "back"]);
-
 const step = ref(1);
-const items = [
-  {
-    title: "Характер",
-    description: "Как тебя могут описать окружающие?",
-    options: [
-      "Простой и наивный",
-      "Грубый и жёсткий",
-      "Честный и справедливый",
-    ],
-  },
-  {
-    title: "Взаимопонимание",
-    description: "Я умею четко доносить свою мысль",
-    options: [
-      "Полностью согласен",
-      "Трудно сказать, согласен или не согласен",
-      "Совершенно не согласен",
-    ],
-  },
-  {
-    title: "Злопамятность",
-    description: "Сможешь легко простить обиды?",
-    options: [
-      "Не прощу и не забуду, даже запишу",
-      "Смотря какая обида, и смотря кто обидел",
-      "Да я и не обижаюсь вовсе",
-    ],
-  },
-  {
-    title: "Чувство юмора",
-    description:
-      "Если мне приходит в голову плохая шутка, я не могу сдержаться и рассказываю ее, и это кого-то обижает.",
-    options: ["Скорее неверно", "Затрудняюсь ответить", "Скорее верно"],
-  },
-  {
-    title: "Самоконтроль",
-    description: "Я умею контролировать свои эмоции",
-    options: [
-      "Совершенно не согласен",
-      "Трудно сказать, согласен или не согласен",
-      "Полностью согласен",
-    ],
-  },
-];
+const isMovedBack = ref(false);
+const emit = defineEmits(["submit-data", "back"]);
 
 const getColumnClass = (v) =>
   ["", `_${v}`].map((v) => [className, "-header__col", v].join(""));
@@ -67,39 +24,44 @@ const handleBack = () => {
   }
 
   step.value -= 1;
+  isMovedBack.value = true;
 };
 
 // card
-const { getCardProps, handleCardSubmit } = (() => {
+const { getCardClass, getCardProps, handleCardSubmit } = (() => {
   const data = ref([]);
 
-  const getCardProps = (item, index) => {
-    const id = index + 1;
-    const result = { id, ...item };
+  const cardClass = `${className}__card`;
+  const getCardClass = (index) => ({
+    [`${cardClass}`]: true,
+    [`${cardClass}--passed`]: step.value > index + 1,
+    [`${cardClass}--passed_${step.value - index - 1}`]: step.value > index + 1,
+    [`${cardClass}--active`]: step.value == index + 1,
+    [`${cardClass}--to-back`]: isMovedBack.value,
+  });
 
-    if (step.value > id) {
-      result.passed = true;
-    }
-    if (step.value >= id) {
-      result.active = true;
-    }
+  const getCardProps = (item, index) => {
+    const result = { ...item };
 
     const nextItem = items[index + 1];
     if (nextItem) {
       result.footerTitle = nextItem.title;
     }
 
-    result.lastOrder = step.value - index - 1;
+    if (step.value !== index + 1) {
+      result.disabled = "";
+    }
 
     return result;
   };
 
-  const handleCardSubmit = ({ id, value }) => {
-    data.value[id - 1] = value;
+  const handleCardSubmit = (index, value) => {
+    data.value[index] = value;
     step.value += 1;
+    isMovedBack.value = false;
   };
 
-  return { data, getCardProps, handleCardSubmit };
+  return { data, getCardClass, getCardProps, handleCardSubmit };
 })();
 </script>
 
@@ -120,8 +82,9 @@ const { getCardProps, handleCardSubmit } = (() => {
     <main :class="`${className}__body`">
       <template v-for="(item, index) in items">
         <ThisQuestionsCard
+          :class="getCardClass(index)"
           v-bind="getCardProps(item, index)"
-          @submit-data="handleCardSubmit"
+          @submit-data="(v) => handleCardSubmit(index, v)"
         />
       </template>
     </main>
@@ -129,10 +92,13 @@ const { getCardProps, handleCardSubmit } = (() => {
 </template>
 
 <style lang="sass">
+@use "sass:math"
+@import '../../../sass/_variables.sass'
+
 .c-stepQuiz
 
   &-header
-    margin-bottom: 30px
+    margin-bottom: 80px
     display: flex
 
     &__col
@@ -155,4 +121,44 @@ const { getCardProps, handleCardSubmit } = (() => {
 
   &__body
     position: relative
+
+  &__card
+    $card: &
+
+    @mixin getCardScale($index)
+      $width: 1094
+      $gap: 20
+      $scaleGap: ($width - $gap * 2 * $index)
+      transform: scale(#{ math.div(math.div($scaleGap, math.div($width, 100)), 100) }) translateY(#{ -$index * $gap * 1px })
+    // getCardScale end
+
+    position: relative
+    display: none
+    transition: ease-out .2s
+    transition-property: transform
+    will-change: transform
+
+    &--active,
+    &--passed
+      display: block
+    &--passed
+      position: absolute
+      transform-origin: top center
+      width: 100%
+      display: block
+      @include getCardScale(2)
+      // self end
+
+      &_1
+        @include getCardScale(1)
+      &_2
+        @include getCardScale(2)
+
+    &--to-back#{$card}--active
+      transition-duration: 0s
+    &--to-back#{$card}--passed
+      &_1
+        @include getCardScale(1)
+      &_2
+        @include getCardScale(2)
 </style>
