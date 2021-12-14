@@ -1,10 +1,35 @@
 <script setup>
-const width = window.innerWidth;
-const height = window.innerHeight;
+import { onMounted, onUnmounted, ref } from "@vue/runtime-core";
+const env = import.meta.env;
+
+const size = ref();
+
+// resize event
+(() => {
+  if (!env.VITE_SHOW_SCREEN_SIZE) return;
+
+  let timeoutElm;
+
+  const resizeFn = () => {
+    clearTimeout(timeoutElm);
+
+    timeoutElm = setTimeout(() => {
+      size.value = [window.innerWidth, window.innerHeight].join("x");
+    }, 256);
+  };
+  resizeFn();
+
+  onMounted(() => {
+    window.addEventListener("resize", resizeFn);
+  });
+  onUnmounted(() => {
+    window.removeEventListener("resize", resizeFn);
+  });
+})();
 </script>
 
 <template>
-  <div class="c-before">{{ width }}x{{ height }}</div>
+  <div class="c-before" v-show="size" v-text="size" />
 </template>
 
 <style lang="sass">
@@ -15,7 +40,7 @@ const height = window.innerHeight;
 
 html, body
   height: 100%
-  
+
 body
   z-index: 0
   position: relative
