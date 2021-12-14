@@ -6,60 +6,60 @@ const className = "ui-formSelectZodiacSelec";
 
 const options = [
   {
-    label: "Aries",
-    value: 1,
+    label: "Овен",
+    value: "aries",
   },
   {
-    label: "Taurus",
-    value: 2,
+    label: "Телец",
+    value: "taurus",
   },
   {
-    label: "Gemini",
-    value: 3,
+    label: "Близнецы",
+    value: "gemini",
   },
   {
-    label: "Cancer",
-    value: 4,
+    label: "Рак",
+    value: "cancer",
   },
   {
-    label: "Leo",
-    value: 5,
+    label: "Лев",
+    value: "leo",
   },
   {
-    label: "Virgo",
-    value: 6,
+    label: "Дева",
+    value: "virgo",
   },
   {
-    label: "Libra",
-    value: 7,
+    label: "Весы",
+    value: "libra",
   },
   {
-    label: "Scorpio",
-    value: 8,
+    label: "Скорпион",
+    value: "scorpio",
   },
   {
-    label: "Sagittarius",
-    value: 9,
+    label: "Стрелец",
+    value: "sagittarius",
   },
   {
-    label: "Capricorn",
-    value: 10,
+    label: "Козерог",
+    value: "capricorn",
   },
   {
-    label: "Aquarius",
-    value: 11,
+    label: "Водолей",
+    value: "aquarius",
   },
   {
-    label: "Pisces",
-    value: 12,
+    label: "Рыбы",
+    value: "pisces",
   },
 ];
 const getImagePath = (value) => `/assets/img/zodiac/${value.toLowerCase()}.svg`;
 
 const props = defineProps({
   modelValue: {
-    type: Number,
-    default: 1,
+    type: String,
+    default: "aries",
   },
 });
 const emit = defineEmits(["update:modelValue"]);
@@ -74,9 +74,10 @@ const formattedModelValue = computed({
 const formattedOptions = computed(() => options.map(({ label }) => label));
 
 const iconStyle = computed(() => {
-  return {
-    backgroundImage: `url('${getImagePath(formattedModelValue.value)}')`,
-  };
+  const value = options.find(
+    ({ label }) => label === formattedModelValue.value
+  ).value;
+  return { backgroundImage: `url('${getImagePath(value)}')` };
 });
 
 const handleClick = (() => {
@@ -85,9 +86,9 @@ const handleClick = (() => {
   return () => {
     if (isImagesLoaded) return;
 
-    options.forEach(({ label }) => {
+    options.forEach(({ value }) => {
       const img = document.createElement("IMG");
-      img.src = getImagePath(label);
+      img.src = getImagePath(value);
     });
   };
 })();
