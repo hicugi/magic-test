@@ -2,9 +2,7 @@
 import { computed, ref } from "@vue/reactivity";
 
 import UiContainer from "../../Ui/Container.vue";
-import Logo from "../../Logo.vue";
-import StepBtnBack from "../BtnBack.vue";
-import ThisProgress from "./progress.vue";
+import StepHeader from "../Header.vue";
 import ThisQuestionsCard from "./questionsCard.vue";
 import items from "./questions.js";
 
@@ -13,9 +11,6 @@ const className = "c-stepQuiz";
 const step = ref(1);
 const isMovedBack = ref(false);
 const emit = defineEmits(["submit-data", "back"]);
-
-const getColumnClass = (v) =>
-  ["", `_${v}`].map((v) => [className, "-header__col", v].join(""));
 
 const handleBack = () => {
   if (step.value === 1) {
@@ -67,17 +62,11 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
 
 <template>
   <UiContainer>
-    <header :class="`${className}-header`">
-      <div :class="getColumnClass('logo')">
-        <Logo />
-      </div>
-      <div :class="getColumnClass('middle')">
-        <ThisProgress v-bind="{ step }" :step-max="items.length" />
-      </div>
-      <div :class="getColumnClass('controls')">
-        <StepBtnBack @click="handleBack" />
-      </div>
-    </header>
+    <StepHeader
+      v-bind="{ step }"
+      :step-max="items.length"
+      @click-back="handleBack"
+    />
 
     <main :class="`${className}__body`">
       <template v-for="(item, index) in items">
@@ -96,22 +85,6 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
 @import '../../../sass/_variables.sass'
 
 .c-stepQuiz
-
-  &-header
-    margin-bottom: 80px
-    display: grid
-    grid-template: "logo main controls" / 253px 1fr 253px
-
-    &__col
-      &_middle
-        display: flex
-        justify-content: center
-      &_logo
-        opacity: 0.5
-      &_controls
-        text-align: right
-  // header end
-
   &__body
     position: relative
 
