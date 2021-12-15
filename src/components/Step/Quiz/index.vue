@@ -4,7 +4,7 @@ import { computed, ref } from "@vue/reactivity";
 import UiContainer from "../../Ui/Container.vue";
 import StepHeader from "../Header.vue";
 import ThisQuestionsCard from "./questionsCard.vue";
-import items from "./questions.js";
+import items from "../../../helpers/questions.js";
 
 const className = "c-stepQuiz";
 
@@ -31,8 +31,9 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
     [`${cardClass}`]: true,
     [`${cardClass}--passed`]: step.value > index + 1,
     [`${cardClass}--passed_${step.value - index - 1}`]: step.value > index + 1,
-    [`${cardClass}--active`]: step.value == index + 1,
+    [`${cardClass}--active`]: step.value === index + 1,
     [`${cardClass}--to-back`]: isMovedBack.value,
+    [`${cardClass}--allout`]: step.value > items.length,
   });
 
   const getCardProps = (item, index) => {
@@ -43,7 +44,7 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
       result.footerTitle = nextItem.title;
     }
 
-    if (step.value !== index + 1) {
+    if (step.value !== index + 1 && items.length !== index + 1) {
       result.disabled = "";
     }
 
@@ -54,6 +55,10 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
     data.value[index] = value;
     step.value += 1;
     isMovedBack.value = false;
+
+    if (index + 1 === items.length) {
+      emit("submit-data", data.value);
+    }
   };
 
   return { data, getCardClass, getCardProps, handleCardSubmit };
@@ -86,6 +91,7 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
 
 .c-stepQuiz
   &__body
+    min-height: 480px
     position: relative
 
   &__card
@@ -100,9 +106,10 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
 
     position: relative
     display: none
+    opacity: 1
     transition: ease-out .2s
-    transition-property: transform
-    will-change: transform
+    transition-property: transform opacity
+    will-change: transform, opacity
 
     &--active,
     &--passed
@@ -127,4 +134,6 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
         @include getCardScale(1)
       &_2
         @include getCardScale(2)
+    &--allout
+      opacity: 0
 </style>
