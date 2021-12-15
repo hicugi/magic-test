@@ -3,6 +3,7 @@ import { computed, ref } from "@vue/reactivity";
 
 import UiContainer from "../../Ui/Container.vue";
 import StepHeader from "../Header.vue";
+import StepBtnBack from "../BtnBack.vue";
 import ThisQuestionsCard from "./questionsCard.vue";
 import items from "../../../helpers/questions.js";
 
@@ -67,11 +68,9 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
 
 <template>
   <UiContainer>
-    <StepHeader
-      v-bind="{ step }"
-      :step-max="items.length"
-      @click-back="handleBack"
-    />
+    <StepHeader v-bind="{ step }" :step-max="items.length">
+      <StepBtnBack @click="handleBackClick" />
+    </StepHeader>
 
     <main :class="`${className}__body`">
       <template v-for="(item, index) in items">

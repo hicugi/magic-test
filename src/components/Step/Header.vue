@@ -1,7 +1,6 @@
 <script setup>
 import Logo from "../Logo.vue";
 import ThisProgress from "./progress.vue";
-import StepBtnBack from "./BtnBack.vue";
 
 const className = "c-stepHeader";
 
@@ -28,7 +27,7 @@ const handleBackClick = () => {
       <ThisProgress v-bind="{ step, stepMax }" />
     </div>
     <div :class="getColumnClass('controls')">
-      <StepBtnBack @click="handleBackClick" />
+      <slot />
     </div>
   </header>
 </template>
