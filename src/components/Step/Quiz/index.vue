@@ -106,7 +106,6 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
       &_middle
         display: flex
         justify-content: center
-
       &_logo
         opacity: 0.5
       &_controls
