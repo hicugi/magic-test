@@ -74,6 +74,7 @@ const handleSubmit = () => {
   $self: &
 
   &__body,
+  &__body::before,
   &-footer
     border: 2px solid #EDF1F7
     border-radius: 20px
@@ -82,6 +83,7 @@ const handleSubmit = () => {
   // body & footer end
 
   &__body
+    position: relative
     padding: 40px 40px 46px
 
   &__title
@@ -193,7 +195,16 @@ const handleSubmit = () => {
   &[disabled]
     #{$self}__body
       border-color: $color-white
-      background-color: #E4EAF2
+
+      &::before
+        z-index: 1
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        background-color: #E4EAF2
+        content: ''
     #{$self}-footer
-      display: none
+      visibility: hidden
 </style>
