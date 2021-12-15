@@ -68,13 +68,13 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
 <template>
   <UiContainer>
     <header :class="`${className}-header`">
-      <div :class="getColumnClass('side')">
+      <div :class="getColumnClass('logo')">
         <Logo />
       </div>
       <div :class="getColumnClass('middle')">
         <ThisProgress v-bind="{ step }" :step-max="items.length" />
       </div>
-      <div :class="getColumnClass('side2')">
+      <div :class="getColumnClass('controls')">
         <StepBtnBack @click="handleBack" />
       </div>
     </header>
@@ -99,24 +99,18 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
 
   &-header
     margin-bottom: 80px
-    display: flex
+    display: grid
+    grid-template: "logo main controls" / 253px 1fr 253px
 
     &__col
       &_middle
         display: flex
         justify-content: center
-        flex-grow: 1
 
-      &_side,
-      &_side2
-        width: 100%
-        max-width: 253px
-
-      &_side
+      &_logo
         opacity: 0.5
-      &_side2
-        display: flex
-        justify-content: flex-end
+      &_controls
+        text-align: right
   // header end
 
   &__body
