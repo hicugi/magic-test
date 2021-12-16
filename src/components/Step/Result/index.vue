@@ -18,10 +18,6 @@ const isLoading = ref(true);
 const loadingTime = 3 || env.VITE_STATS_LOADING_TIME || 4;
 const rightImageIndex = ref(0);
 
-const computedClass = computed(() => ({
-  [className]: true,
-}));
-
 const title = computed(() =>
   isLoading.value ? "Проверка на\nсовместимость" : "Найден подходящий\nпартнер"
 );
@@ -43,10 +39,10 @@ const imagesProps = computed(() => {
   return result;
 });
 
-let rightImageRotateInterval;
-const initedTime = new Date().getTime();
-onMounted(() => {
-  preloadImages([...avatars.others, avatars.right]);
+const isImagesLoaded = ref(false);
+const runImageRotation = () => {
+  let rightImageRotateInterval;
+  const initedTime = new Date().getTime();
 
   rightImageRotateInterval = setInterval(() => {
     const currentTime = new Date().getTime();
@@ -58,7 +54,19 @@ onMounted(() => {
       clearInterval(rightImageRotateInterval);
     }
   }, 200);
+};
+
+onMounted(() => {
+  preloadImages([...avatars.others, avatars.right]).then(() => {
+    isImagesLoaded.value = true;
+    runImageRotation();
+  });
 });
+
+const computedClass = computed(() => ({
+  [className]: true,
+  [`${className}--loaded`]: isImagesLoaded,
+}));
 </script>
 
 <template>
@@ -69,7 +77,7 @@ onMounted(() => {
       <h3 :class="`${className}__title`" v-text="title" />
 
       <ThisImages :class="`${className}__images`" v-bind="imagesProps" />
-      <ThisStats :loading="isLoading" />
+      <ThisStats v-show="isImagesLoaded" :loading="isLoading" />
     </div>
   </UiContainer>
 </template>
