@@ -1,23 +1,30 @@
 <script setup>
+import { computed, ref } from "@vue/reactivity";
+import { onMounted } from "@vue/runtime-core";
 import UiContainer from "../../Ui/Container.vue";
 import StepHeader from "../Header.vue";
 import ThisImages from "./images.vue";
-import questions from "../../../helpers/questions.js";
-import avatars from "../../../helpers/avatars.js";
-import { computed, ref } from "@vue/reactivity";
-import { onMounted } from "@vue/runtime-core";
+import ThisStats from "./stats.vue";
+import questions from "../../../helpers/questions";
+import avatars from "../../../helpers/avatars";
+import preloadImages from "../../../helpers/preloadImages";
+
+const env = import.meta.env;
 
 const className = "c-stepResult";
 const step = questions.length + 1;
 
 const isLoading = ref(true);
-const loadingTime = 4
+const loadingTime = 3 || env.VITE_STATS_LOADING_TIME || 4;
 const rightImageIndex = ref(0);
 
 const computedClass = computed(() => ({
   [className]: true,
 }));
 
+const title = computed(() =>
+  isLoading.value ? "Проверка на\nсовместимость" : "Найден подходящий\nпартнер"
+);
 const imagesProps = computed(() => {
   const result = {
     leftImage: avatars.left,
@@ -39,6 +46,8 @@ const imagesProps = computed(() => {
 let rightImageRotateInterval;
 const initedTime = new Date().getTime();
 onMounted(() => {
+  preloadImages([...avatars.others, avatars.right]);
+
   rightImageRotateInterval = setInterval(() => {
     const currentTime = new Date().getTime();
 
@@ -48,7 +57,7 @@ onMounted(() => {
       isLoading.value = false;
       clearInterval(rightImageRotateInterval);
     }
-  }, 80);
+  }, 200);
 });
 </script>
 
@@ -57,9 +66,10 @@ onMounted(() => {
     <StepHeader v-bind="{ step, stepMax: step - 1 }" />
 
     <div :class="computedClass">
-      <h3 :class="`${className}__title`" v-text="'Проверка на совместимость'" />
+      <h3 :class="`${className}__title`" v-text="title" />
 
-      <ThisImages v-bind="imagesProps" />
+      <ThisImages :class="`${className}__images`" v-bind="imagesProps" />
+      <ThisStats :loading="isLoading" />
     </div>
   </UiContainer>
 </template>
@@ -69,16 +79,21 @@ onMounted(() => {
   position: absolute
   left: 50%
   transform: translateX(-50%)
-  padding-top: 28px 15px 40px
+  padding: 28px 35px 40px
   border: 1px solid #EDF1F7
   border-radius: 20px
   width: 405px
   background-color: #FFFFFF
 
   &__title
+    margin: 0 0 28px
     color: #646876
     font-size: 22px
     font-weight: 700
     line-height: 27px
     text-align: center
+    white-space: pre-wrap
+
+  &__images
+    margin-bottom: 35px
 </style>

@@ -23,12 +23,10 @@ const getImageStyle = (key) => {
 <style lang="sass">
 .c-stepResultImages
   $image-size: 140px
-  $gap: 12px
-  $shape-width: 29px
 
   position: relative
   display: flex
-  justify-content: center
+  justify-content: space-between
 
   &::before
     $keyframe: 'stepResultImagesHeart'
@@ -65,9 +63,6 @@ const getImageStyle = (key) => {
     justify-self: center
     background: no-repeat center #EDF1F7
     background-size: cover
-
-    &:last-child
-      margin-left: #{ $gap * 2 + $shape-width }
 
   &--active::before
     opacity: 1

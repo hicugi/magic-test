@@ -51,19 +51,27 @@ const handleQuizSubmit = (data) => {
 <template>
   <div :class="className">
     <div :class="getItemClass('beginning')">
-      <ThisBeginning @submit="nextStep" />
+      <ThisBeginning v-if="activeItem === 'beginning'" @submit="nextStep" />
     </div>
 
     <div :class="getItemClass('auth')">
-      <ThisAuth @back="prevStep" @submit-data="handleAuthSubmit" />
+      <ThisAuth
+        v-if="activeItem === 'auth'"
+        @back="prevStep"
+        @submit-data="handleAuthSubmit"
+      />
     </div>
 
     <div :class="getItemClass('quiz')">
-      <ThisQuiz @back="prevStep" @submit-data="handleQuizSubmit" />
+      <ThisQuiz
+        v-if="activeItem === 'quiz'"
+        @back="prevStep"
+        @submit-data="handleQuizSubmit"
+      />
     </div>
 
     <div :class="getItemClass('result')">
-      <ThisResult />
+      <ThisResult v-if="activeItem === 'result'" />
     </div>
   </div>
 </template>

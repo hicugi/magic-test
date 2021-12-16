@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "@vue/reactivity";
 import ThisSelect from "./index.vue";
+import preloadImages from "../../../../helpers/preloadImages";
 
 const className = "ui-formSelectZodiacSelec";
 
@@ -85,11 +86,7 @@ const handleClick = (() => {
 
   return () => {
     if (isImagesLoaded) return;
-
-    options.forEach(({ value }) => {
-      const img = document.createElement("IMG");
-      img.src = getImagePath(value);
-    });
+    preloadImages(options.map(({ value }) => getImagePath(value)));
   };
 })();
 </script>
