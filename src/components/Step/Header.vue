@@ -12,10 +12,6 @@ const emit = defineEmits(["click-back"]);
 
 const getColumnClass = (v) =>
   ["", `_${v}`].map((v) => [className, "__col", v].join(""));
-
-const handleBackClick = () => {
-  emit("click-back");
-};
 </script>
 
 <template>

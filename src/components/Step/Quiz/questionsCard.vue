@@ -7,6 +7,7 @@ const props = defineProps({
   description: String,
   options: Array,
 
+  index: Number,
   footerTitle: {
     type: String,
     default: "",
@@ -45,7 +46,7 @@ const handleSubmit = () => {
               <input
                 :class="`${className}-list__controller`"
                 type="radio"
-                :name="`questionsCard${id}`"
+                :name="`questionsCard${index}`"
                 :value="index"
                 @change="handleItemChnage(index)"
               />

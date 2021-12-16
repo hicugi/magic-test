@@ -13,7 +13,7 @@ const step = ref(1);
 const isMovedBack = ref(false);
 const emit = defineEmits(["submit-data", "back"]);
 
-const handleBack = () => {
+const handleBackClick = () => {
   if (step.value === 1) {
     emit("back");
     return;
@@ -38,7 +38,7 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
   });
 
   const getCardProps = (item, index) => {
-    const result = { ...item };
+    const result = { ...item, index };
 
     const nextItem = items[index + 1];
     if (nextItem) {
