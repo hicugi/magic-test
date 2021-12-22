@@ -38,6 +38,7 @@ const props = defineProps({
   position: relative
   width: $size
   height: $size
+  overflow: hidden
 
   &__control
     position: absolute
