@@ -5,7 +5,8 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "deploy": "cd dist && rsync --archive --compress --delete . mag@webmaho.com:/var/www/magic-test.webmaho.com/public_html"
   },
   "dependencies": {
     "vue": "^3.2.16"
