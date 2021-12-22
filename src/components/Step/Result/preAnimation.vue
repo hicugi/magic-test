@@ -59,10 +59,13 @@ const runImageRotation = () =>
 
 const emit = defineEmits(["end"]);
 onMounted(() => {
-  preloadImages([...avatars.others, avatars.right]).then(() => {
+  preloadImages([avatars.left, ...avatars.others, avatars.right]).then(() => {
     isImagesLoaded.value = true;
 
     runImageRotation().then(() => {
+      const audio = document.querySelector("#partnerFoundAudio");
+      audio.play();
+
       setTimeout(() => {
         emit("end");
       }, 4000);
@@ -78,6 +81,8 @@ const computedClass = computed(() => ({
 
 <template>
   <StepHeader v-bind="{ step, stepMax: step - 1 }" />
+
+  <audio id="partnerFoundAudio" src="/assets/sound/partner-found.wav" />
 
   <div :class="computedClass">
     <h3 :class="`${className}__title`" v-text="title" />

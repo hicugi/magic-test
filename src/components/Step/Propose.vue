@@ -3,21 +3,30 @@ import { computed, ref } from "@vue/reactivity";
 import UiContainer from "../Ui/Container.vue";
 
 const noStepIndex = ref(0);
+const isSuccess = ref(false);
 
 const className = "c-stepResultPropose";
 const computedClass = computed(() => ({
   [className]: true,
-  [`${className}--step-${noStepIndex.value}`]: true,
+  [`${className}--step-${noStepIndex.value}`]: !isSuccess.value,
+  [`${className}--step-success`]: isSuccess.value,
 }));
 
 const handleNoClick = () => {
   noStepIndex.value += 1;
 };
-const handleYesClick = () => {};
+const handleYesClick = () => {
+  isSuccess.value = true;
+
+  const audio = document.querySelector("#proposeSuccessSound");
+  audio.play();
+};
 </script>
 
 <template>
   <UiContainer>
+    <audio id="proposeSuccessSound" src="/assets/sound/happy.wav" />
+
     <div :class="computedClass">
       <h2 :class="`${className}__title`">Любимая...</h2>
       <div :class="`${className}__image`"></div>
@@ -25,6 +34,7 @@ const handleYesClick = () => {};
       <p :class="`${className}__text`">
         <span>Выходи за меня!</span>
         <span>Амал жок...</span>
+        <span>🥳 урааа <span>🥳</span></span>
       </p>
 
       <div :class="`${className}-footer`">
@@ -97,7 +107,7 @@ const handleYesClick = () => {};
     text-align: center
     overflow: hidden
 
-    span
+    > span
       position: absolute
       left: 0
       top: 0
@@ -107,8 +117,13 @@ const handleYesClick = () => {};
       transition-property: transform
       will-change: transform
 
-      &:last-child
+      &:nth-child(2),
+      &:nth-child(3)
         transform: translateY(100%)
+
+    > span > span
+      display: inline-block
+      transform: scale(-1,1)
   // end text
 
   &-footer
@@ -148,11 +163,26 @@ const handleYesClick = () => {};
   &--step-2 &-footer__col_no
     width: 18%
   &--step-3 &
-    &__text span
-      &:first-child
+    &__text > span
+      &:nth-child(1)
         transform: translateY(-100%)
-      &:last-child
+      &:nth-child(2)
         transform: translateY(0%)
     &-footer__col_no
       width: 0%
+  &--step-success &
+    &__text > span
+      &:nth-child(1)
+        transform: translateY(-100%)
+      &:nth-child(3)
+        transform: translateY(0%)
+    &-footer
+      opacity: 0
+      &::after
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        content: ''
 </style>
