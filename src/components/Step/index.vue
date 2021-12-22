@@ -4,11 +4,12 @@ import ThisBeginning from "./Beginning.vue";
 import ThisAuth from "./Auth.vue";
 import ThisQuiz from "./Quiz/index.vue";
 import ThisResult from "./Result/index.vue";
+import ThisPropose from "./Propose.vue";
 
 const env = import.meta.env;
 
 const className = "c-step";
-const items = ["beginning", "auth", "quiz", "result"];
+const items = ["beginning", "auth", "quiz", "result", "propose"];
 
 const initialStepIndex = Number(env.VITE_ACTIVE_STEP) || 0;
 const activeItem = ref(items[initialStepIndex]);
@@ -71,7 +72,11 @@ const handleQuizSubmit = (data) => {
     </div>
 
     <div :class="getItemClass('result')">
-      <ThisResult v-if="activeItem === 'result'" />
+      <ThisResult v-if="activeItem === 'result'" @animation-ended="nextStep" />
+    </div>
+
+    <div :class="getItemClass('propose')">
+      <ThisPropose v-if="activeItem === 'propose'" />
     </div>
   </div>
 </template>
