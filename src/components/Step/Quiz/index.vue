@@ -7,9 +7,12 @@ import StepBtnBack from "../BtnBack.vue";
 import ThisQuestionsCard from "./questionsCard.vue";
 import items from "../../../helpers/questions.js";
 
+const env = import.meta.env;
+
 const className = "c-stepQuiz";
 
-const step = ref(1);
+const initialStepIndex = Number(env.VITE_ACTIVE_STEP) ? items.length : 1;
+const step = ref(initialStepIndex);
 const isMovedBack = ref(false);
 const emit = defineEmits(["submit-data", "back"]);
 
