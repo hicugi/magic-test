@@ -40,15 +40,15 @@ const handleSubmit = () => {
       <p :class="`${className}__description`" v-text="description" />
 
       <ul :class="`${className}-list`">
-        <template v-for="(item, index) in options">
+        <template v-for="(item, optionIndex) in options">
           <li :class="`${className}-list__item`">
             <label :class="`${className}-list__label`">
               <input
                 :class="`${className}-list__controller`"
                 type="radio"
                 :name="`questionsCard${index}`"
-                :value="index"
-                @change="handleItemChnage(index)"
+                :value="optionIndex"
+                @change="handleItemChnage(optionIndex)"
               />
               <span :class="`${className}-list__text`" v-text="item" />
             </label>
