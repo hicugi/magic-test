@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "@vue/reactivity";
+import { computed, ref } from "@vue/reactivity";
 import ThisBeginning from "./Beginning.vue";
 import ThisAuth from "./Auth.vue";
 import ThisQuiz from "./Quiz/index.vue";
@@ -8,11 +8,16 @@ import ThisPropose from "./Propose.vue";
 
 const env = import.meta.env;
 
-const className = "c-step";
 const items = ["beginning", "auth", "quiz", "result", "propose"];
 
 const initialStepIndex = Number(env.VITE_ACTIVE_STEP) || 0;
 const activeItem = ref(items[initialStepIndex]);
+
+const className = "c-step";
+const computedClass = computed(() => [
+  className,
+  `${className}_${activeItem.value}`,
+]);
 
 const userInfo = ref({});
 const quizInfo = ref([]);
@@ -50,7 +55,7 @@ const handleQuizSubmit = (data) => {
 </script>
 
 <template>
-  <div :class="className">
+  <div :class="computedClass">
     <div :class="getItemClass('beginning')">
       <ThisBeginning v-if="activeItem === 'beginning'" @submit="nextStep" />
     </div>
@@ -84,7 +89,24 @@ const handleQuizSubmit = (data) => {
 <style lang="sass">
 .c-step
   $gap: 20px
+
   height: 100%
+
+  &::before
+    z-index: -1
+    position: absolute
+    width: 100%
+    height: 100%
+    background: url('/assets/img/bg/full-others.svg') no-repeat center
+    background-size: cover
+    content: ''
+  &::after
+    position: absolute
+    background-image: url('/assets/img/bg/full-start.svg')
+    opacity: 0
+    content: ''
+  &_beginning::before
+    background-image: url('/assets/img/bg/full-start.svg')
 
   &-item
     $display: flex

@@ -6,7 +6,5 @@ import Step from "./components/Step/index.vue";
 
 <template>
   <AppBefore />
-  <AppBackground />
-
   <Step />
 </template>
