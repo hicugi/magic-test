@@ -1,6 +1,6 @@
 <script setup>
-import Logo from "../Logo.vue";
 import UiButton from "../Ui/Button/index.vue";
+import Logo from "../Logo.vue";
 
 const className = "c-setpBeginning";
 </script>
@@ -27,39 +27,42 @@ const className = "c-setpBeginning";
 
 <style lang="sass">
 .c-setpBeginning
-  margin-left: auto
-  margin-right: auto
   padding: var(--container-gap)
-  max-width: var(--container-width)
-  height: 100%
   display: flex
   flex-direction: column
   justify-content: space-between
 
   &__header
-    margin-bottom: 60px
-
+    margin-bottom: 100px
+    @media screen and (min-width: 768px)
+      margin-bottom: 50px
   &__body
-    max-width: 900px
+    max-width: 520px
 
   &__title
     margin: 0 0 26px
     color: #162447
-    font-size: 68px
+    font-size: 32px
     font-weight: 700
     line-height: 1.25em
     text-transform: uppercase
+    @media screen and (min-width: 768px)
+      font-size: 48px
   &__subtitle
-    margin: 0 0 36px
-    max-width: 780px
+    margin: 0 0 70px
     color: #646876
-    font-size: 28px
+    font-size: 16px
     font-weight: 500
-    line-height: 34px
+    line-height: 1.5
     text-transform: uppercase
+    @media screen and (min-width: 768px)
+      margin-bottom: 36px
+      font-size: 24px
 
   &__footer
     color: #646876
-    font-size: 28px
+    font-size: 14px
     line-height: 1.2em
-</style>
+    @media screen and (min-width: 768px)
+      font-size: 28px
+  </style>

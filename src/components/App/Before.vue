@@ -5,6 +5,7 @@
   --color-gray: #EDF1F7
   --container-gap: 30px
   --container-width: 1154px
+  --media-braker-md: 768px
 
 *, *::before, *::after
   box-sizing: border-box
@@ -14,6 +15,7 @@ body
   position: relative
   margin: 0
   padding: 0
+  min-width: 400px
   background-color: var(--color-white)
   font-family: 'Inter', sans-serif
 button

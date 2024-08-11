@@ -90,8 +90,6 @@ const handleQuizSubmit = (data) => {
 .c-step
   $gap: 20px
 
-  height: 100%
-
   &::before
     z-index: -1
     position: absolute
@@ -109,17 +107,17 @@ const handleQuizSubmit = (data) => {
     background-image: url('/assets/img/bg/full-start.svg')
 
   &-item
-    $display: flex
+    $display: grid
 
+    margin-left: auto
+    margin-right: auto
     padding: #{$gap} 20px
-    height: 100%
+    max-width: var(--container-width)
+    min-height: 100vh
+    min-height: 100lvh
     flex-grow: 1
     display: none
-    justify-content: stretch
-    align-items: stretch
-
-    > *
-      flex-grow: 1
+    grid-template: '.' 1fr / 1fr
 
     &_hide
       display: none
