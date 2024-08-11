@@ -28,25 +28,43 @@ const getColumnClass = (v) =>
   </UiContainer>
 </template>
 
-<style lang="sass">
-.c-stepAuth
+<style lang="scss">
+.c-stepAuth {
+  position: relative;
+  background-color: red;
 
-  &-row
-    display: flex
+  &-row {
+    display: grid;
+    row-gap: 30px;
+    grid-template-areas: "side side2" "middle middle";
 
-    &__col
-      &_middle
-        flex-grow: 1
-
+    &__col {
       &_side,
-      &_side2
-        width: 100%
-        max-width: 253px
+      &_side2 {
+        overflow: hidden;
+      }
 
-      &_side
-        opacity: 0.5
-      &_side2
-        padding-top: 15px
-        display: flex
-        justify-content: flex-end
+      &_side {
+        grid-area: side;
+        opacity: 0.5;
+      }
+      &_middle {
+        grid-area: middle;
+      }
+      &_side2 {
+        grid-area: side2;
+        padding-top: 15px;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      --size-side: 180px;
+      display: grid;
+      grid-template-areas: "side middle side2";
+      grid-template-columns: var(--size-side) 1fr var(--size-side);
+    }
+  }
+}
 </style>

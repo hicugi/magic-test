@@ -64,7 +64,9 @@ const handleSubmit = () => {
 .c-authForm
   $margin: 30px
 
+  margin: 0 auto
   padding: 38px 15px 45px
+  max-width: 520px
   border-radius: 30px
 
   &__inner

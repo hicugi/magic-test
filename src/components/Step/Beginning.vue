@@ -27,10 +27,17 @@ const className = "c-setpBeginning";
 
 <style lang="sass">
 .c-setpBeginning
-  padding: var(--container-gap)
+  --padding: 50px 20px
+
+  padding: var(--padding)
+  min-height: 100vh
+  min-height: 100lvh
   display: flex
   flex-direction: column
   justify-content: space-between
+
+  @media screen and (min-width: 768px)
+    --padding: 50px
 
   &__header
     margin-bottom: 100px
@@ -65,4 +72,4 @@ const className = "c-setpBeginning";
     line-height: 1.2em
     @media screen and (min-width: 768px)
       font-size: 28px
-  </style>
+</style>

@@ -88,7 +88,7 @@ const handleQuizSubmit = (data) => {
 
 <style lang="sass">
 .c-step
-  $gap: 20px
+  --step-gap: 30px
 
   &::before
     z-index: -1
@@ -107,17 +107,14 @@ const handleQuizSubmit = (data) => {
     background-image: url('/assets/img/bg/full-start.svg')
 
   &-item
-    $display: grid
+    $display: block
 
     margin-left: auto
     margin-right: auto
-    padding: #{$gap} 20px
     max-width: var(--container-width)
     min-height: 100vh
     min-height: 100lvh
-    flex-grow: 1
     display: none
-    grid-template: '.' 1fr / 1fr
 
     &_hide
       display: none
@@ -126,7 +123,5 @@ const handleQuizSubmit = (data) => {
 
   @media (min-height: 1024px)
     &-item
-      $gap: 70px
-      padding-top: $gap
-      padding-bottom: $gap
+      --step-gap: 70px
 </style>

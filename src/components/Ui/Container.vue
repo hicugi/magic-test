@@ -4,14 +4,16 @@ const className = "ui-container";
 
 <template>
   <div :class="className">
-    <div :class="`${className}-bg`">
-      <div :class="`${className}-bg__item`" />
-      <div :class="`${className}-bg__item`" />
-      <div :class="`${className}-bg__item`" />
-    </div>
+    <div :class="`${className}-wrapper`">
+      <div :class="`${className}-bg`">
+        <div :class="`${className}-bg__item`" />
+        <div :class="`${className}-bg__item`" />
+        <div :class="`${className}-bg__item`" />
+      </div>
 
-    <div :class="`${className}__inner`">
-      <slot />
+      <div :class="`${className}__inner`">
+        <slot />
+      </div>
     </div>
   </div>
 </template>
@@ -21,13 +23,24 @@ const className = "ui-container";
 .ui-container
   --border-radius: 26px
 
-  position: relative
-  margin-left: auto
-  margin-right: auto
-  padding: var(--container-gap)
-  border-radius: var(--border-radius)
+  margin: 0 auto
+  padding: 0 20px
   max-width: var(--container-width)
-  overflow: hidden
+  display: grid
+  justify-content: stretch
+  align-items: center
+  min-height: 100vh
+  min-height: 100lvh
+
+  @media screen and (min-width: 768px)
+    padding: 30px
+
+  &-wrapper
+    position: relative
+    padding: 20px
+    border-radius: var(--border-radius)
+    max-height: calc(100vh - 40px)
+    overflow: hidden
 
   &-bg
     &__item
@@ -43,9 +56,6 @@ const className = "ui-container";
         height: 100%
         background: linear-gradient(180deg, #FFFFFF 0%, #EDF1F7 100%)
       &:nth-child(2)
-        $size: calc(100% + 40px)
-        width: var(--size)
-        height: var(--size)
         background: url('/assets/img/bg/full-others.svg') no-repeat center
         background-size: cover
         filter: blur(34px)
