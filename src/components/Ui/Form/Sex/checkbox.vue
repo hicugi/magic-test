@@ -29,15 +29,13 @@ const props = defineProps({
 </template>
 
 <style lang="sass">
-@import "../../../../sass/_variables.sass"
-
 .ui-formSexCheckbox
   $self: &
   $size: 64px
 
   position: relative
-  width: $size
-  height: $size
+  width: var(--size)
+  height: var(--size)
   overflow: hidden
 
   &__control
@@ -47,11 +45,11 @@ const props = defineProps({
     opacity: 0
 
     &:checked ~ #{$self}__icon
-      border-color: $color-primary
-      background-color: $color-primary
-      color: $color-white
+      border-color: var(--color-primary)
+      background-color: var(--color-primary)
+      color: var(--color-white)
       path
-        fill: $color-white
+        fill: var(--color-white)
 
   &__icon
     position: absolute

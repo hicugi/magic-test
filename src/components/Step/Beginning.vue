@@ -26,13 +26,11 @@ const className = "c-setpBeginning";
 </template>
 
 <style lang="sass">
-@import "../../sass/_variables.sass"
-
 .c-setpBeginning
   margin-left: auto
   margin-right: auto
-  padding: $container-gap
-  max-width: $container-width
+  padding: var(--container-gap)
+  max-width: var(--container-width)
   height: 100%
   display: flex
   flex-direction: column

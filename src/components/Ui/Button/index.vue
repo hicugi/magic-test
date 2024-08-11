@@ -19,8 +19,6 @@ const computedClass = computed(() =>
 </template>
 
 <style lang="sass">
-@import "../../../sass/_variables.sass"
-
 .ui-btn
   padding: 18px 40px 18px
   border: none
@@ -37,6 +35,6 @@ const computedClass = computed(() =>
     display: block
 
   &_primary
-    background-color: $color-primary
-    color: $color-white
+    background-color: var(--color-primary)
+    color: var(--color-white)
 </style>

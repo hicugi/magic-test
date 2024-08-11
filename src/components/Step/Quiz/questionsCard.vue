@@ -69,8 +69,6 @@ const handleSubmit = () => {
 </template>
 
 <style lang="sass">
-@import '../../../sass/_variables.sass'
-
 .c-stepQuizQuestionsCard
   $self: &
 
@@ -79,7 +77,7 @@ const handleSubmit = () => {
   &-footer
     border: 2px solid #EDF1F7
     border-radius: 20px
-    background-color: $color-white
+    background-color: var(--color-white)
     will-change: background-color, border-color
   // body & footer end
 
@@ -106,17 +104,17 @@ const handleSubmit = () => {
 
   &-list
     $list: &
-    $gap: 20px
+    --gap: 20px
 
-    margin: 0 #{-$gap}
+    margin: 0 var(--gap)
     padding: 0
     display: flex
     justify-content: center
     list-style: none
 
     &__item
-      padding-left: $gap
-      padding-right: $gap
+      padding-left: var(--gap)
+      padding-right: var(--gap)
       width: 33.33333%
 
     &__label
@@ -135,10 +133,10 @@ const handleSubmit = () => {
       height: 100%
       opacity: 0
       &:checked ~ #{$list}__text
-        color: $color-white
+        color: var(--color-white)
         &::before
-          background-color: $color-primary
-          border-color: $color-primary
+          background-color: var(--color-primary)
+          border-color: var(--color-primary)
 
     &__text
       display: block
@@ -195,7 +193,7 @@ const handleSubmit = () => {
 
   &[disabled]
     #{$self}__body
-      border-color: $color-white
+      border-color: var(--color-white)
 
       &::before
         z-index: 1

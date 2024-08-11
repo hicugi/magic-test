@@ -3,8 +3,6 @@
 </template>
 
 <style lang="sass">
-@import "../../sass/_variables.sass"
-
 .c-stepBtnBack
   position: relative
   width: 60px
@@ -12,7 +10,7 @@
   border: 1px solid #EDF1F7
   border-radius: 100%
   display: inline-block
-  background-color: $color-white
+  background-color: var(--color-white)
   overflow: hidden
   text-indent: -9999px
 

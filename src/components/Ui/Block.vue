@@ -9,9 +9,7 @@ const className = "ui-block";
 </template>
 
 <style lang="sass">
-@import "../../sass/_variables.sass"
-
 .ui-block
   border: 2px solid #EDF1F7
-  background-color: $color-white
+  background-color: var(--color-white)
 </style>

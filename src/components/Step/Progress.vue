@@ -41,35 +41,33 @@ const getItemClass = (index, value = "default") =>
 </template>
 
 <style lang="sass">
-@import "@/sass/_variables.sass"
-
-$height: 60px
-$border-color: #E2E9F5
-$gap: 20px
-
 .c-setupQuizProgress
+  --height: 60px
+  --border-color: #E2E9F5
+  --gap: 20px
+
   margin: 0 auto
   padding: 0 25px
-  border: 1px solid $border-color
-  border-radius: $height
-  height: $height
+  border: 1px solid var(--border-color)
+  border-radius: var(--height)
+  height: var(--height)
   display: flex
   justify-content: center
   align-items: center
-  background-color: $color-white
+  background-color: var(--color-white)
   list-style: none
 
   &__item
     $item: &
 
     & + &
-      margin-left: $gap
+      margin-left: var(--gap)
 
     &_default
       width: 50px
       height: 10px
       background-color: #EDF1F7
-      border: 1px solid $border-color
+      border: 1px solid var(--border-color)
       border-radius: 10px
       transition: linear .2s
       transition-property: background-color, border-color
@@ -77,8 +75,8 @@ $gap: 20px
 
 
     &_default#{$item}--active
-      background-color: $color-primary
-      border-color: $color-primary
+      background-color: var(--color-white)
+      border-color: var(--color-white)
 
     &_last
       padding-top: 4px
@@ -88,6 +86,6 @@ $gap: 20px
         will-will-change: fill stroke
     &_last#{$item}--active
       path
-        fill: $color-primary
-        stroke: $color-primary
+        fill: var(--color-white)
+        stroke: var(--color-white)
 </style>

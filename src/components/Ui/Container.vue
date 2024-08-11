@@ -17,17 +17,16 @@ const className = "ui-container";
 </template>
 
 <style lang="sass">
-@import "../../sass/_variables.sass"
-
-$border-radius: 26px
 
 .ui-container
+  --border-radius: 26px
+
   position: relative
   margin-left: auto
   margin-right: auto
-  padding: $container-gap
-  border-radius: $border-radius
-  max-width: $container-width
+  padding: var(--container-gap)
+  border-radius: var(--border-radius)
+  max-width: var(--container-width)
   overflow: hidden
 
   &-bg
@@ -37,7 +36,7 @@ $border-radius: 26px
       left: 50%
       top: 50%
       transform: translate(-50%, -50%)
-      border-radius: $border-radius
+      border-radius: var(--border-radius)
 
       &:nth-child(1)
         width: 100%
@@ -45,8 +44,8 @@ $border-radius: 26px
         background: linear-gradient(180deg, #FFFFFF 0%, #EDF1F7 100%)
       &:nth-child(2)
         $size: calc(100% + 40px)
-        width: $size
-        height: $size
+        width: var(--size)
+        height: var(--size)
         background: url('/assets/img/bg/full-others.svg') no-repeat center
         background-size: cover
         filter: blur(34px)

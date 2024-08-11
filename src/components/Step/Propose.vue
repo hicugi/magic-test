@@ -66,8 +66,6 @@ const handleYesClick = () => {
 </template>
 
 <style lang="sass">
-@import "../../sass/_variables.sass"
-
 .c-stepResultPropose
   position: absolute
   left: 50%
@@ -77,7 +75,7 @@ const handleYesClick = () => {
   border: 1px solid #EDF1F7
   border-radius: 23px
   width: 450px
-  background-color: $color-white
+  background-color: var(--color-white)
 
   &__title
     margin: 0 0 30px
@@ -95,15 +93,15 @@ const handleYesClick = () => {
   // end image
 
   &__text
-    $height: 51px
+    --height: 51px
 
     position: relative
     margin: 0 0 62px
-    height: $height
+    height: var(--height)
     color: #162447
     font-size: 42px
     font-weight: 700
-    line-height: $height
+    line-height: var(--height)
     text-align: center
     overflow: hidden
 
@@ -154,8 +152,8 @@ const handleYesClick = () => {
       background: none
       color: #A6AFBD
     &_yes
-      background: $color-primary
-      color: $color-white
+      background: var(--color-primary)
+      color: var(--color-white)
   // end btn
 
   &--step-1 &-footer__col_no

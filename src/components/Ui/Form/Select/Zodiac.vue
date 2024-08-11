@@ -99,8 +99,6 @@ const handleClick = (() => {
 </template>
 
 <style lang="sass">
-@import '../../../../sass/_variables.sass'
-
 .ui-formSelectZodiacSelec
   z-index: 0
   position: relative
@@ -114,6 +112,6 @@ const handleClick = (() => {
     border-radius: 8px
     width: calc(100% - 10px)
     height: calc(100% - 10px)
-    background: $color-gray no-repeat center
+    background: var(--color-gray) no-repeat center
     pointer-events: none
 </style>

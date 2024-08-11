@@ -89,7 +89,6 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
 
 <style lang="sass">
 @use "sass:math"
-@import '../../../sass/_variables.sass'
 
 .c-stepQuiz
   &__body
