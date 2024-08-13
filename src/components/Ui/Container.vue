@@ -27,7 +27,7 @@ const className = "ui-container";
   --ui-container-inner: calc(var(--ui-container-height) - var(--ui-container-padding) * 2)
 
   margin: 0 auto
-  padding: 0 20px
+  padding: 0 10px
   max-width: var(--container-width)
   display: grid
   justify-content: stretch

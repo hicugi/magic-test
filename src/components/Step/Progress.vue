@@ -95,6 +95,6 @@ const getItemClass = (index, value = "default") =>
         will-will-change: fill stroke
     &_last#{$item}--active
       path
-        fill: var(--color-white)
-        stroke: var(--color-white)
+        fill: var(--color-primary)
+        stroke: var(--color-primary)
 </style>

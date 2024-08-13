@@ -80,28 +80,39 @@ const computedClass = computed(() => ({
 </script>
 
 <template>
-  <StepHeader v-bind="{ step, stepMax: step - 1 }" />
-
-  <audio id="partnerFoundAudio" src="/assets/sound/partner-found.wav" />
-
   <div :class="computedClass">
-    <h3 :class="`${className}__title`" v-text="title" />
+    <StepHeader v-bind="{ step, stepMax: step - 1 }" />
 
-    <ThisImages :class="`${className}__images`" v-bind="imagesProps" />
-    <ThisStats v-show="isImagesLoaded" :loading="isLoading" />
+    <audio id="partnerFoundAudio" src="/assets/sound/partner-found.wav" />
+
+    <div :class="`${className}-wrapper`">
+      <h3 :class="`${className}__title`" v-text="title" />
+
+      <ThisImages :class="`${className}__images`" v-bind="imagesProps" />
+      <ThisStats v-show="isImagesLoaded" :loading="isLoading" />
+    </div>
   </div>
 </template>
 
 <style lang="sass">
 .c-stepResultPreAnimation
-  position: absolute
-  left: 50%
-  transform: translateX(-50%)
-  padding: 28px 35px 40px
-  border: 1px solid #EDF1F7
-  border-radius: 20px
-  width: 405px
-  background-color: #FFFFFF
+  min-height: var(--ui-container-inner)
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: stretch
+
+  &-wrapper
+    margin: 0 auto
+    padding: 28px 20px 40px
+    border: 1px solid #EDF1F7
+    width: 100%
+    max-width: 422px
+    border-radius: 20px
+    background-color: #FFFFFF
+
+    @media screen and (min-width: 768px)
+      padding: 20px 35px 20px
 
   &__title
     margin: 0 0 28px
