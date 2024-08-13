@@ -3,6 +3,10 @@ import { ref } from "@vue/reactivity";
 import UiContainer from "../../Ui/Container.vue";
 import ThisPreAnimation from "./preAnimation.vue";
 
+const props = defineProps({
+  picture: String,
+});
+
 const emit = defineEmits(["animation-ended"]);
 
 const handleAnimationEnd = () => {
@@ -12,6 +16,6 @@ const handleAnimationEnd = () => {
 
 <template>
   <UiContainer>
-    <ThisPreAnimation @end="handleAnimationEnd" />
+    <ThisPreAnimation v-bind="props" @end="handleAnimationEnd" />
   </UiContainer>
 </template>

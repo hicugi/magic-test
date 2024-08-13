@@ -13,6 +13,10 @@ const env = import.meta.env;
 const className = "c-stepResultPreAnimation";
 const step = questions.length + 1;
 
+const props = defineProps({
+  picture: String,
+});
+
 const isLoading = ref(true);
 const loadingTime = 3 || env.VITE_STATS_LOADING_TIME || 4;
 const rightImageIndex = ref(0);
@@ -22,7 +26,7 @@ const title = computed(() =>
 );
 const imagesProps = computed(() => {
   const result = {
-    leftImage: avatars.left,
+    leftImage: props.picture || avatars.left,
     rightImage: avatars.right,
   };
 

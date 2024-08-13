@@ -1,8 +1,8 @@
 const attachFulPath = (key) => `/assets/img/avatars/${key}.jpeg`;
 
 export default {
-  left: attachFulPath("she"),
-  right: attachFulPath("me"),
+  left: attachFulPath("wife"),
+  right: attachFulPath("hicugi"),
 
   others: [
     "america",

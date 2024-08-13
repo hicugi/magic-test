@@ -77,7 +77,11 @@ const handleQuizSubmit = (data) => {
     </div>
 
     <div :class="getItemClass('result')">
-      <ThisResult v-if="activeItem === 'result'" @animation-ended="nextStep" />
+      <ThisResult
+        v-if="activeItem === 'result'"
+        :picture="userInfo.picture"
+        @animation-ended="nextStep"
+      />
     </div>
 
     <div :class="getItemClass('propose')">
