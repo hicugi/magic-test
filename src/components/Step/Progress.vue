@@ -42,12 +42,13 @@ const getItemClass = (index, value = "default") =>
 
 <style lang="sass">
 .c-setupQuizProgress
-  --height: 60px
+  --height: 48px
+  --gap: 10px
+  --line-width: 44px
   --border-color: #E2E9F5
-  --gap: 20px
 
   margin: 0 auto
-  padding: 0 25px
+  padding: 0 15px
   border: 1px solid var(--border-color)
   border-radius: var(--height)
   height: var(--height)
@@ -57,6 +58,14 @@ const getItemClass = (index, value = "default") =>
   background-color: var(--color-white)
   list-style: none
 
+  @media screen and (min-width: 768px)
+    --height: 60px
+    --gap: 20px
+    --line-width: 50px
+
+    padding-left: 25px
+    padding-right: 25px
+
   &__item
     $item: &
 
@@ -64,7 +73,7 @@ const getItemClass = (index, value = "default") =>
       margin-left: var(--gap)
 
     &_default
-      width: 50px
+      width: var(--line-width)
       height: 10px
       background-color: #EDF1F7
       border: 1px solid var(--border-color)
@@ -75,8 +84,8 @@ const getItemClass = (index, value = "default") =>
 
 
     &_default#{$item}--active
-      background-color: var(--color-white)
-      border-color: var(--color-white)
+      background-color: var(--color-primary)
+      border-color: var(--color-primary)
 
     &_last
       padding-top: 4px

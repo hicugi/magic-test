@@ -83,48 +83,61 @@ const handleSubmit = () => {
 
   &__body
     position: relative
-    padding: 40px 40px 46px
+    padding: 20px 15px
+
+    @media screen and (min-width: 768px)
+      padding: 40px 60px 46px
 
   &__title
-    margin: 0 0 20px
+    margin: 0 0 10px
     color: #162447
-    font-size: 34px
+    font-size: 24px
     font-weight: 700
     line-height: 1.25em
     text-transform: uppercase
     text-align: center
+
+    @media screen and (min-width: 768px)
+      margin-bottom: 20px
+      font-size: 34px
+
   &__description
-    margin: 0 0 40px
-    height: 70px
+    margin: 0 0
+    min-height: 120px
     color: #646876
-    font-size: 28px
+    font-size: 18px
     font-weight: 500
     line-height: 1.25em
     text-align: center
 
+    @media screen and (min-width: 768px)
+      min-height: 110px
+      font-size: 28px
+
   &-list
     $list: &
-    --gap: 20px
 
-    margin: 0 var(--gap)
+    margin: 0
     padding: 0
-    display: flex
-    justify-content: center
+    display: grid
+    gap: 30px
+    row-gap: 10px
     list-style: none
 
-    &__item
-      padding-left: var(--gap)
-      padding-right: var(--gap)
-      width: 33.33333%
+    @media screen and (min-width: 768px)
+      grid-template-columns: repeat(3, 1fr)
+      justify-content: center
 
     &__label
       z-index: 0
       position: relative
-      height: 58px
+      height: 48px
       padding: 0 15px
       display: flex
       justify-content: center
       align-items: center
+      @media screen and (min-width: 768px)
+        height: 58px
     &__controller
       position: absolute
       left: 0
@@ -141,11 +154,14 @@ const handleSubmit = () => {
     &__text
       display: block
       color: #646876
-      font-size: 20px
+      font-size: 16px
       font-weight: 500
       line-height: 1em
       text-align: center
       will-change: color
+
+      @media screen and (min-width: 768px)
+        font-size: 20px
 
       &::before
         z-index: -1
@@ -163,27 +179,35 @@ const handleSubmit = () => {
 
   &-footer
     padding: 20px
-    display: flex
-    justify-content: space-between
-    align-items: center
+
+    @media screen and (min-width: 768px)
+      display: flex
+      justify-content: space-between
+      align-items: center
 
     &__title
       padding-top: 2px
+      display: none
       font-size: 24px
       font-weight: 700
       line-height: 1em
       text-transform: uppercase
       color: #646876
+      @media screen and (min-width: 768px)
+        display: block
     &__btn
       display: block
       padding: 0 40px
       border: 2px solid #DFE4EC
       border-radius: 8px
+      width: 100%
       height: 44px
       background: #E4EAF2
       color: #646876
       font-size: 20px
       font-weight: 500
+      @media screen and (min-width: 768px)
+        width: auto
   // footer end
 
 

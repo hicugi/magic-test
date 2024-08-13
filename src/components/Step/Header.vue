@@ -30,20 +30,30 @@ const getColumnClass = (v) =>
 
 <style lang="sass">
 .c-stepHeader
-  margin-bottom: 80px
   display: grid
-  grid-template: "logo main controls" / 253px 1fr 253px
+  grid-template-areas: "logo controls" "main main"
+  grid-template-columns: 1fr 1fr
+
+  @media screen and (min-width: 768px)
+    grid-template-areas: "logo main controls"
+    grid-template-columns: 253px 1fr 253px
+
 
   &__col
     $middle-controls-top-gap: 15px
-    
+
     &_middle
+      grid-area: main
       padding-top: $middle-controls-top-gap
-      display: flex
-      justify-content: center
+      @media screen and (min-width: 768px)
+        display: flex
+        justify-content: center
+
     &_logo
+      grid-area: logo
       opacity: 0.5
     &_controls
+      grid-area: controls
       padding-top: $middle-controls-top-gap
       text-align: right
 </style>

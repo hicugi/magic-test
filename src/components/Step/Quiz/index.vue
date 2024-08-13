@@ -71,19 +71,21 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
 
 <template>
   <UiContainer>
-    <StepHeader v-bind="{ step }" :step-max="items.length">
-      <StepBtnBack @click="handleBackClick" />
-    </StepHeader>
+    <div class="c-stepQuiz">
+      <StepHeader v-bind="{ step }" :step-max="items.length">
+        <StepBtnBack @click="handleBackClick" />
+      </StepHeader>
 
-    <main :class="`${className}__body`">
-      <template v-for="(item, index) in items">
-        <ThisQuestionsCard
-          :class="getCardClass(index)"
-          v-bind="getCardProps(item, index)"
-          @submit-data="(v) => handleCardSubmit(index, v)"
-        />
-      </template>
-    </main>
+      <main :class="`${className}__body`">
+        <template v-for="(item, index) in items">
+          <ThisQuestionsCard
+            :class="getCardClass(index)"
+            v-bind="getCardProps(item, index)"
+            @submit-data="(v) => handleCardSubmit(index, v)"
+          />
+        </template>
+      </main>
+    </div>
   </UiContainer>
 </template>
 
@@ -91,9 +93,16 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
 @use "sass:math"
 
 .c-stepQuiz
+  min-height: var(--ui-container-inner)
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
   &__body
-    min-height: 480px
     position: relative
+
+    @media screen and (min-width: 768px)
+      min-height: 400px
 
   &__card
     $card: &
@@ -102,7 +111,8 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
       $width: 1094
       $gap: 20
       $scaleGap: ($width - $gap * 2 * $index)
-      transform: scale(#{ math.div(math.div($scaleGap, math.div($width, 100)), 100) }) translateY(#{ -$index * $gap * 1px })
+      transform: scale(#{ math.div(math.div($scaleGap, math.div($width, 100)), 100) }) translateY(#{ -($index * 0.50) * $gap * 1px })
+      opacity: #{ 1 - $index * 0.35 }
     // getCardScale end
 
     position: relative
@@ -127,6 +137,10 @@ const { getCardClass, getCardProps, handleCardSubmit } = (() => {
         @include getCardScale(1)
       &_2
         @include getCardScale(2)
+      &_3,
+      &_4,
+      &_5
+        opacity: 0
 
     &--to-back#{$card}--active
       transition-duration: 0s
