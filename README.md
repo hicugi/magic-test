@@ -1,4 +1,8 @@
-# Magic Test
+<p align="center">
+  <a href="https://hicugi.github.io/magic-test/">
+    <img src="public/assets/img/logo.svg" alt="TvMaze" width="176px">
+  </a>
+</p>
 
 <p align="center">
   <a href="https://nodejs.org/en/">
@@ -12,6 +16,9 @@
   </a>
 </p>
 
+# Magic Test
+
+[Demo link](https://hicugi.github.io/magic-test/).<br>
 This is a pet project made for proposing to marry to my wife.
 
 ## Local run
