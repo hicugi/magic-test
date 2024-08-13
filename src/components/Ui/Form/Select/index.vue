@@ -49,7 +49,7 @@ const handleChange = ({ target }) => {
   &__controller
     position: relative
     border: none
-    padding: 12px 20px 12px 15px
+    padding: 10px 20px 10px 15px
     width: calc(100% + 16px)
     display: block
     background: none

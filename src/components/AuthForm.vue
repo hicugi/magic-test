@@ -62,12 +62,19 @@ const handleSubmit = () => {
 
 <style lang="sass">
 .c-authForm
-  $margin: 30px
+  $margin: 20px
 
   margin: 0 auto
-  padding: 38px 15px 45px
+  padding: 0 15px
   max-width: 520px
+  min-height: 580px
+  display: flex
+  flex-direction: column
+  justify-content: center
   border-radius: 30px
+
+  @media screen and (min-width: 768px)
+    min-height: var(--ui-container-inner)
 
   &__inner
     margin-left: auto
@@ -91,6 +98,9 @@ const handleSubmit = () => {
   &-row
     margin-bottom: $margin
     display: grid
-    grid-gap: 20px
+    grid-gap: 10px
     grid-template: ". ." / 1fr 118px
+
+    @media screen and (min-width: 768px)
+      grid-gap: 20px
 </style>

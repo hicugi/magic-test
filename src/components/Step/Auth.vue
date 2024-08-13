@@ -30,12 +30,9 @@ const getColumnClass = (v) =>
 
 <style lang="scss">
 .c-stepAuth {
-  position: relative;
-  background-color: red;
-
   &-row {
     display: grid;
-    row-gap: 30px;
+    row-gap: 50px;
     grid-template-areas: "side side2" "middle middle";
 
     &__col {
@@ -64,6 +61,7 @@ const getColumnClass = (v) =>
       display: grid;
       grid-template-areas: "side middle side2";
       grid-template-columns: var(--size-side) 1fr var(--size-side);
+      row-gap: 30px;
     }
   }
 }

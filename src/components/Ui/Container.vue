@@ -22,6 +22,9 @@ const className = "ui-container";
 
 .ui-container
   --border-radius: 26px
+  --ui-container-height: 745px
+  --ui-container-padding: 20px
+  --ui-container-inner: calc(var(--ui-container-height) - var(--ui-container-padding) * 2)
 
   margin: 0 auto
   padding: 0 20px
@@ -33,13 +36,15 @@ const className = "ui-container";
   min-height: 100lvh
 
   @media screen and (min-width: 768px)
+    --ui-container-height: 620px
+
     padding: 30px
 
   &-wrapper
     position: relative
-    padding: 20px
+    padding: var(--ui-container-padding)
     border-radius: var(--border-radius)
-    max-height: calc(100vh - 40px)
+    min-height: var(--ui-container-height)
     overflow: hidden
 
   &-bg
@@ -62,4 +67,5 @@ const className = "ui-container";
       &:nth-child(3)
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(237, 241, 247, 0.5) 100%)
         border: 0.874085px solid #FFFFFF
+  // end bg
 </style>

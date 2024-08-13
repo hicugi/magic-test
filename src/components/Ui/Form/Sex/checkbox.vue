@@ -31,7 +31,7 @@ const props = defineProps({
 <style lang="sass">
 .ui-formSexCheckbox
   $self: &
-  $size: 64px
+  --size: 64px
 
   position: relative
   width: var(--size)

@@ -65,5 +65,8 @@ const yearModel = getComputedModel("year");
 .ui-formDate
   display: grid
   grid-template: "day month year" / 64px 1fr 118px
-  grid-gap: 20px
+  grid-gap: 10px
+
+  @media screen and (min-width: 768px)
+    grid-gap: 20px
 </style>
