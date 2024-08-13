@@ -1,7 +1,22 @@
-# Vue 3 + Vite
+# Magic Test
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<p align="center">
+  <a href="https://nodejs.org/en/">
+    <img src="https://img.shields.io/badge/Node.js-v16.13.2-339933" alt="Node.js">
+  </a>
+  <a href="https://npmjs.com/">
+    <img src="https://img.shields.io/badge/npm-v8.1.2-CB3837" alt="Npm">
+  </a>
+  <a href="https://vuejs.org/">
+    <img src="https://img.shields.io/badge/Vue.js-v3.2.16-4FC08D" alt="Version">
+  </a>
+</p>
 
-## Recommended IDE Setup
+This is a pet project made for proposing to marry to my wife.
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## Local run
+
+```bash
+npm install
+npm run dev
+```
