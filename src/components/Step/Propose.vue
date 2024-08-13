@@ -28,37 +28,42 @@ const handleYesClick = () => {
     <audio id="proposeSuccessSound" src="/assets/sound/happy.wav" />
 
     <div :class="computedClass">
-      <h2 :class="`${className}__title`">Любимая...</h2>
-      <div :class="`${className}__image`"></div>
+      <div :class="`${className}-wrapper`">
+        <h2 :class="`${className}__title`">Любимая...</h2>
+        <div :class="`${className}__image`"></div>
 
-      <p :class="`${className}__text`">
-        <span>Выходи за меня!</span>
-        <span>Амал жок...</span>
-        <span>🥳 урааа <span>🥳</span></span>
-      </p>
+        <p :class="`${className}__text`">
+          <span>Выходи за меня!</span>
+          <span>Амал жок...</span>
+          <span>🥳 урааа <span>🥳</span></span>
+        </p>
 
-      <div :class="`${className}-footer`">
-        <div
-          :class="[`${className}-footer__col`, `${className}-footer__col_no`]"
-        >
-          <button
-            :class="[`${className}__btn`, `${className}__btn_no`]"
-            type="button"
-            @click="handleNoClick"
+        <div :class="`${className}-footer`">
+          <div
+            :class="[`${className}-footer__col`, `${className}-footer__col_no`]"
           >
-            Нет
-          </button>
-        </div>
-        <div
-          :class="[`${className}-footer__col`, `${className}-footer__col_yes`]"
-        >
-          <button
-            :class="[`${className}__btn`, `${className}__btn_yes`]"
-            type="button"
-            @click="handleYesClick"
+            <button
+              :class="[`${className}__btn`, `${className}__btn_no`]"
+              type="button"
+              @click="handleNoClick"
+            >
+              Нет
+            </button>
+          </div>
+          <div
+            :class="[
+              `${className}-footer__col`,
+              `${className}-footer__col_yes`,
+            ]"
           >
-            Да
-          </button>
+            <button
+              :class="[`${className}__btn`, `${className}__btn_yes`]"
+              type="button"
+              @click="handleYesClick"
+            >
+              Да
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -67,15 +72,22 @@ const handleYesClick = () => {
 
 <style lang="sass">
 .c-stepResultPropose
-  position: absolute
-  left: 50%
-  top: 50%
-  transform: translate(-50%, -50%)
-  padding: 30px 38px 38px
-  border: 1px solid #EDF1F7
-  border-radius: 23px
-  width: 450px
-  background-color: var(--color-white)
+  display: flex
+  flex-direction: column
+  justify-content: center
+  height: var(--ui-container-inner)
+
+  &-wrapper
+    margin: 0 auto
+    padding: 30px 20px 38px
+    border: 1px solid #EDF1F7
+    border-radius: 23px
+    width: 100%
+    max-width: 450px
+    background-color: var(--color-white)
+
+    @media screen and (min-width: 768px)
+      padding: 30px 38px 38px
 
   &__title
     margin: 0 0 30px
@@ -99,7 +111,7 @@ const handleYesClick = () => {
     margin: 0 0 62px
     height: var(--height)
     color: #162447
-    font-size: 42px
+    font-size: 32px
     font-weight: 700
     line-height: var(--height)
     text-align: center
