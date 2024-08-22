@@ -13,7 +13,7 @@ const className = "c-setpBeginning";
       </header>
 
       <div :class="`${className}__body`">
-        <h1 :class="`${className}__title`">Тест на совместимость</h1>
+        <h1 :class="`${className}__title`">{{ $t("title") }}</h1>
         <p :class="`${className}__subtitle`">
           Узнай на сколько ты совместим(а) со своей второй половинкой
         </p>
