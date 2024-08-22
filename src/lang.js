@@ -42,6 +42,37 @@ const messages = {
     zodiacAquarius: "Aquarius",
     zodiacPisces: "Pisces",
 
+    q1Title: "Character",
+    q1Description: "How can you be described by others?",
+    q1Option1: "Simple and naive",
+    q1Option2: "Rude and tough",
+    q1Option3: "Honest and fair",
+
+    q2Title: "Communication",
+    q2Description: "I can clearly convey my thought",
+    q2Option1: "Completely agree",
+    q2Option2: "Hard to say, agree or disagree",
+    q2Option3: "Completely disagree",
+
+    q3Title: "Grudge",
+    q3Description: "Can you easily forgive insults?",
+    q3Option1: "I will not forgive or forget",
+    q3Option2: "It dependins what and who",
+    q3Option3: "I don't get offended at all",
+
+    q4Title: "Sense of humor",
+    q4Description:
+      "If a bad joke comes to my mind, I can't help but tell it, and it offends someone.",
+    q4Option1: "I will definitely tell it",
+    q4Option2: "I will think about it, but I will not tell it",
+    q4Option3: "I will not tell it, I will keep it to myself",
+
+    q5Title: "Jealousy",
+    q5Description: "Are you jealous?",
+    q5Option1: "Yes, I am very jealous",
+    q5Option2: "I am jealous only when there is a reason",
+    q5Option3: "I am not jealous at all",
+
     continue: "Continue",
     back: "Back",
   },
@@ -85,6 +116,37 @@ const messages = {
     zodiacCapricorn: "Козерог",
     zodiacAquarius: "Водолей",
     zodiacPisces: "Рыбы",
+
+    q1Title: "Характер",
+    q1Description: "Как тебя могут описать окружающие?",
+    q1Option1: "Простой и наивный",
+    q1Option2: "Грубый и жёсткий",
+    q1Option3: "Честный и справедливый",
+
+    q2Title: "Взаимопонимание",
+    q2Description: "Я умею четко доносить свою мысль",
+    q2Option1: "Полностью согласен",
+    q2Option2: "Трудно сказать, согласен или не согласен",
+    q2Option3: "Совершенно не согласен",
+
+    q3Title: "Злопамятность",
+    q3Description: "Сможешь легко простить обиды?",
+    q3Option1: "Не прощу и не забуду, даже запишу",
+    q3Option2: "Смотря какая обида, и смотря кто обидел",
+    q3Option3: "Да я и не обижаюсь вовсе",
+
+    q4Title: "Чувство юмора",
+    q4Description:
+      "Если мне приходит в голову плохая шутка, я не могу сдержаться и рассказываю ее, и это кого-то обижает.",
+    q4Option1: "Обязательно расскажу",
+    q4Option2: "Подумаю, но не скажу",
+    q4Option3: "Не скажу, оставлю при себе",
+
+    q5Title: "Ревность",
+    q5Description: "Ты ревнив(а)?",
+    q5Option1: "Да, я очень ревнив(а)",
+    q5Option2: "Ревную только когда есть повод",
+    q5Option3: "Я не ревную в принципе",
 
     continue: "Продолжить",
     back: "Назад",

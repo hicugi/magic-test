@@ -5,7 +5,15 @@ import UiContainer from "../../Ui/Container.vue";
 import StepHeader from "../Header.vue";
 import StepBtnBack from "../BtnBack.vue";
 import ThisQuestionsCard from "./questionsCard.vue";
-import items from "../../../helpers/questions.js";
+import { getTranslate } from "../../../lang.js";
+
+const items = Array.from({ length: 5 }, (_, i) => ({
+  title: getTranslate(`q${i + 1}Title`),
+  description: getTranslate(`q${i + 1}Description`),
+  options: Array.from({ length: 3 }, (_, j) =>
+    getTranslate(`q${i + 1}Option${j + 1}`)
+  ),
+}));
 
 const env = import.meta.env;
 

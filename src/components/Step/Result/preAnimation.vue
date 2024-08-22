@@ -1,17 +1,17 @@
 <script setup>
 import { computed, ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
+
 import StepHeader from "../Header.vue";
 import ThisImages from "./images.vue";
 import ThisStats from "./stats.vue";
-import questions from "../../../helpers/questions";
 import avatars from "../../../helpers/avatars";
 import preloadImages from "../../../helpers/preloadImages";
 
 const env = import.meta.env;
 
 const className = "c-stepResultPreAnimation";
-const step = questions.length + 1;
+const step = 5 + 1;
 
 const props = defineProps({
   picture: String,
