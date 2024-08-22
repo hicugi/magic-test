@@ -10,7 +10,7 @@ const handleInput = (e) => {
 </script>
 
 <template>
-  <input class="ui-formInput" v-model="modelValue" @input="handleInput" />
+  <input class="ui-formInput" :value="modelValue" @input="handleInput" />
 </template>
 
 <style lang="sass">

@@ -1,4 +1,4 @@
-const attachFulPath = (key) => `/assets/img/avatars/${key}.jpeg`;
+const attachFulPath = (key) => `assets/img/avatars/${key}.jpeg`;
 
 export default {
   left: attachFulPath("wife"),

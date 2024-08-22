@@ -22,6 +22,6 @@
     transform: translate(-50%, -50%)
     width: 15px
     height: 26px
-    background: url('/assets/img/arrow-back.svg') no-repeat center
+    background: url('assets/img/arrow-back.svg') no-repeat center
     content: ''
 </style>

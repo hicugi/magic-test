@@ -61,7 +61,7 @@ const className = "ui-container";
         height: 100%
         background: linear-gradient(180deg, #FFFFFF 0%, #EDF1F7 100%)
       &:nth-child(2)
-        background: url('/assets/img/bg/full-others.svg') no-repeat center
+        background: url('assets/img/bg/full-others.svg') no-repeat center
         background-size: cover
         filter: blur(34px)
       &:nth-child(3)

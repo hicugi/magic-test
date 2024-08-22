@@ -16,8 +16,7 @@ const props = defineProps({
 
     <input
       :class="`${className}__control`"
-      :value="props.value"
-      v-model="modelValue"
+      :value="modelValue"
       type="radio"
       name="sex"
     />

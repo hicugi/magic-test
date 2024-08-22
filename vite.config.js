@@ -9,11 +9,23 @@ export default defineConfig({
     host: "0.0.0.0",
   },
 
-  plugins: [vue()],
+  plugins: [
+    vue({
+      template: {
+        transformAssetUrls: {
+          includeAbsolute: false,
+        },
+      },
+    }),
+  ],
 
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    outDir: "docs",
+  },
+  base: "magic-test",
 });

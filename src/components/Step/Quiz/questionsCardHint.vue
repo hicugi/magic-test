@@ -145,7 +145,7 @@ $box-height: 42px
     &::before
       left: 0
       width: 100%
-      background-image: url(/assets/img/quiz-select-hint.svg)
+      background-image: url(assets/img/quiz-select-hint.svg)
       background-size: auto 100%
       background-repeat: no-repeat
       background-position: left center

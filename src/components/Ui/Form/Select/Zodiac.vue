@@ -57,7 +57,7 @@ const options = [
     value: "pisces",
   },
 ].map((item) => ({ ...item, label: getTranslate(item.label) }));
-const getImagePath = (value) => `/assets/img/zodiac/${value.toLowerCase()}.svg`;
+const getImagePath = (value) => `assets/img/zodiac/${value.toLowerCase()}.svg`;
 
 const props = defineProps({
   modelValue: {

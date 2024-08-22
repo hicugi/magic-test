@@ -27,3 +27,9 @@ This is a pet project made for proposing to marry to my wife.
 npm install
 npm run dev
 ```
+
+## Buld for demo in GitHub
+
+1. Switch to `demo` branch
+2. Build app `npm run build` into `docs` director
+3. Deploy changes, GitHub should automaticly apply changes after some time

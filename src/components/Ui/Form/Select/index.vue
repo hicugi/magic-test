@@ -25,7 +25,7 @@ const handleChange = ({ target }) => {
   <div :class="className">
     <select
       :class="`${className}__controller`"
-      v-model="modelValue"
+      :value="modelValue"
       @change="handleChange"
     >
       <option v-if="label" value="" disabled>{{ label }}</option>

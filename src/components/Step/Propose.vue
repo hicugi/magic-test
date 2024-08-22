@@ -25,7 +25,7 @@ const handleYesClick = () => {
 
 <template>
   <UiContainer>
-    <audio id="proposeSuccessSound" src="/assets/sound/happy.wav" />
+    <audio id="proposeSuccessSound" src="assets/sound/happy.wav" />
 
     <div :class="computedClass">
       <div :class="`${className}-wrapper`">

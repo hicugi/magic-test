@@ -88,7 +88,7 @@ const computedClass = computed(() => ({
   <div :class="computedClass">
     <StepHeader v-bind="{ step, stepMax: step - 1 }" />
 
-    <audio id="partnerFoundAudio" src="/assets/sound/partner-found.wav" />
+    <audio id="partnerFoundAudio" src="assets/sound/partner-found.wav" />
 
     <div :class="`${className}-wrapper`">
       <h3 :class="`${className}__title`" v-text="title" />

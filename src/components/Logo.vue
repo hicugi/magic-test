@@ -6,7 +6,7 @@ const className = "c-logo";
   <div :class="className">
     <img
       :class="`${className}__img`"
-      src="/assets/img/logo.svg"
+      src="assets/img/logo.svg"
       alt="MagicTest logo"
     />
   </div>

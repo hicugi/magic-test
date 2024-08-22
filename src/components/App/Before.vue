@@ -29,3 +29,5 @@ button
   font-size: 18px
   line-height: 1.5em
 </style>
+
+<template></template>
