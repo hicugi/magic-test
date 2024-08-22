@@ -73,8 +73,25 @@ const messages = {
     q5Option2: "I am jealous only when there is a reason",
     q5Option3: "I am not jealous at all",
 
+    resultTitle1: "Compatibility\ncheck",
+    resultTitle2: "A suitable partner\nhas been found",
+    resultListTitle: "Your compatibility",
+    resultList1: "Attitude",
+    resultList2: "Love",
+    resultList3: "Compatibility",
+    resultList4: "Understanding",
+
     continue: "Continue",
     back: "Back",
+    nextQuestion: "Next",
+    chooseWarning: "Choose one of the options",
+
+    proposeTitle: "My love...",
+    proposeText: "Marry me!",
+    proposeNo: "No",
+    proposeYes: "Yes",
+    proposeNoOption: "Well, I guess...",
+    proposeYay: "yaaay",
   },
   ru: {
     title: "Тест на совместимость",
@@ -148,8 +165,25 @@ const messages = {
     q5Option2: "Ревную только когда есть повод",
     q5Option3: "Я не ревную в принципе",
 
+    resultTitle1: "Проверка на\nсовместимость",
+    resultTitle2: "Найден подходящий\nпартнер",
+    resultListTitle: "Ваша совместимость",
+    resultList1: "Отношение",
+    resultList2: "Любовь",
+    resultList3: "Совместимость",
+    resultList4: "Взаимопонимание",
+
     continue: "Продолжить",
     back: "Назад",
+    nextQuestion: "Далее",
+    chooseWarning: "Выберите один из вариантов",
+
+    proposeTitle: "Любимая...",
+    proposeText: "Выходи за меня!",
+    proposeNo: "Нет",
+    proposeYes: "Да",
+    proposeNoOption: "Амал жок...",
+    proposeYay: "урааа",
   },
 };
 

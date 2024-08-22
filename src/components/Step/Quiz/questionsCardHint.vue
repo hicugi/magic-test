@@ -89,7 +89,7 @@ const computedClass = computed(() =>
         />
       </svg>
     </div>
-    <div :class="`${className}__text`">Выбери</div>
+    <div :class="`${className}__text`">{{ $t("chooseWarning") }}</div>
   </div>
 </template>
 

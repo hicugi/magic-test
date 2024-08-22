@@ -63,7 +63,9 @@ const handleSubmit = () => {
 
     <footer :class="`${className}-footer`">
       <div :class="`${className}-footer__title`">{{ footerTitle }}</div>
-      <button :class="`${className}-footer__btn`" type="submit">Далее</button>
+      <button :class="`${className}-footer__btn`" type="submit">
+        {{ $t("nextQuestion") }}
+      </button>
     </footer>
   </form>
 </template>

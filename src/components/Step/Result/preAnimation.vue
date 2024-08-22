@@ -7,6 +7,7 @@ import ThisImages from "./images.vue";
 import ThisStats from "./stats.vue";
 import avatars from "../../../helpers/avatars";
 import preloadImages from "../../../helpers/preloadImages";
+import { getTranslate } from "../../../lang.js";
 
 const env = import.meta.env;
 
@@ -22,7 +23,7 @@ const loadingTime = 3 || env.VITE_STATS_LOADING_TIME || 4;
 const rightImageIndex = ref(0);
 
 const title = computed(() =>
-  isLoading.value ? "Проверка на\nсовместимость" : "Найден подходящий\nпартнер"
+  isLoading.value ? getTranslate("resultTitle1") : getTranslate("resultTitle2")
 );
 const imagesProps = computed(() => {
   const result = {

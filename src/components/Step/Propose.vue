@@ -29,13 +29,13 @@ const handleYesClick = () => {
 
     <div :class="computedClass">
       <div :class="`${className}-wrapper`">
-        <h2 :class="`${className}__title`">Любимая...</h2>
+        <h2 :class="`${className}__title`">{{ $t("proposeTitle") }}</h2>
         <div :class="`${className}__image`"></div>
 
         <p :class="`${className}__text`">
-          <span>Выходи за меня!</span>
-          <span>Амал жок...</span>
-          <span>🥳 урааа <span>🥳</span></span>
+          <span>{{ $t("proposeText") }}</span>
+          <span>{{ $t("proposeNoOption") }}</span>
+          <span>🥳 {{ $t("proposeYay") }} <span>🥳</span></span>
         </p>
 
         <div :class="`${className}-footer`">
@@ -47,7 +47,7 @@ const handleYesClick = () => {
               type="button"
               @click="handleNoClick"
             >
-              Нет
+              {{ $t("proposeNo") }}
             </button>
           </div>
           <div
@@ -61,7 +61,7 @@ const handleYesClick = () => {
               type="button"
               @click="handleYesClick"
             >
-              Да
+              {{ $t("proposeYes") }}
             </button>
           </div>
         </div>

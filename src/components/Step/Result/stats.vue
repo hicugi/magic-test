@@ -1,5 +1,6 @@
 <script setup>
 import { computed, onMounted, ref, watch } from "@vue/runtime-core";
+import { getTranslate } from "../../../lang.js";
 
 const props = defineProps({
   loading: Boolean,
@@ -10,7 +11,9 @@ const className = "c-stepResultStats";
 const min = ref(62);
 const updatedValue = ref(0);
 
-const labels = ["Отношение", "Любовь", "Совместимость", "Взаимопонимание"];
+const labels = Array.from({ length: 4 }, (_, i) =>
+  getTranslate(`resultList${i + 1}`)
+);
 const getValue = (max = 99) =>
   Math.floor(Math.random() * (max - min.value) + min.value);
 
@@ -52,7 +55,7 @@ onMounted(() => {
 <template>
   <div :class="{ [className]: true, [`${className}--loading`]: loading }">
     <h3 :class="`${className}-title`">
-      <span>Ваша совместимость </span>
+      <span>{{ $t("resultListTitle") }} </span>
       <span :class="`${className}-title__num`">{{ titleNumber }}</span>
       <span>%</span>
     </h3>
