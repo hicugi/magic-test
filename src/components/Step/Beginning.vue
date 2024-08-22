@@ -14,10 +14,8 @@ const className = "c-setpBeginning";
 
       <div :class="`${className}__body`">
         <h1 :class="`${className}__title`">{{ $t("title") }}</h1>
-        <p :class="`${className}__subtitle`">
-          Узнай на сколько ты совместим(а) со своей второй половинкой
-        </p>
-        <UiButton primary @click="$emit('submit')">Начать</UiButton>
+        <p :class="`${className}__subtitle`">{{ $t("subtitle") }}</p>
+        <UiButton primary @click="$emit('submit')">{{ $t("start") }}</UiButton>
       </div>
     </div>
 

@@ -29,7 +29,9 @@ const handleChange = ({ target }) => {
       @change="handleChange"
     >
       <option v-if="label" value="" disabled>{{ label }}</option>
-      <option v-for="item in options">{{ item }}</option>
+      <option v-for="item in options" :value="item.value">
+        {{ item.label }}
+      </option>
     </select>
     <span />
   </div>

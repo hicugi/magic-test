@@ -40,7 +40,7 @@ const handleSubmit = () => {
 <template>
   <UiBlock :class="className">
     <form :class="`${className}__inner`" @submit.prevent="handleSubmit">
-      <h2 :class="`${className}__title`">Заполните все поля</h2>
+      <h2 :class="`${className}__title`">{{ $t("signupTitle") }}</h2>
 
       <UiFormFile :class="`${className}__file`" v-model="pictureModel" />
       <UiFormSex :class="`${className}__field`" v-model="sexModel" />
@@ -48,14 +48,14 @@ const handleSubmit = () => {
 
       <div :class="`${className}-row`">
         <div :class="[`${className}-row__col`, `${className}-row__col_name`]">
-          <UiFormInput v-model="nameModel" placeholder="Имя" />
+          <UiFormInput v-model="nameModel" :placeholder="$t('name')" />
         </div>
         <div :class="[`${className}-row__col`, `${className}-row__col_zodiac`]">
           <UiFormSelectZodiac v-model="zodiacModel" />
         </div>
       </div>
 
-      <UiButton type="submit" block primary>Продолжить</UiButton>
+      <UiButton type="submit" block primary>{{ $t("continue") }}</UiButton>
     </form>
   </UiBlock>
 </template>

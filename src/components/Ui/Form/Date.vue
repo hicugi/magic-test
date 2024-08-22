@@ -1,19 +1,22 @@
 <script setup>
 import { computed, ref } from "@vue/reactivity";
-import helpMonths from "../../../helpers/months";
+
 import UiFormSelect from "./Select/index.vue";
+import { getTranslate } from "../../../lang.js";
 
 const className = "ui-formDate";
 
 const currentYear = new Date().getFullYear() - 6;
 const [days, months, years] = (() => [
-  Array(31)
-    .fill("")
-    .map((_, i) => i + 1),
-  [...helpMonths],
-  Array(94)
-    .fill("")
-    .map((_, i) => currentYear - i),
+  Array.from({ length: 31 }, (_, i) => ({ label: i + 1, value: i + 1 })),
+  Array.from({ length: 12 }, (_, i) => ({
+    label: getTranslate(`month${i + 1}`),
+    value: i + 1,
+  })),
+  Array.from({ length: 94 }, (_, i) => ({
+    label: currentYear - i,
+    value: currentYear - i,
+  })),
 ])();
 
 const props = defineProps({
@@ -50,13 +53,17 @@ const yearModel = getComputedModel("year");
 <template>
   <div :class="className">
     <div :class="`${className}__col`">
-      <UiFormSelect label="Д" :options="days" v-model="dayModel" />
+      <UiFormSelect :label="$t('dateD')" :options="days" v-model="dayModel" />
     </div>
     <div :class="`${className}__col`">
-      <UiFormSelect label="месяц" :options="months" v-model="monthModel" />
+      <UiFormSelect
+        :label="$t('dateM')"
+        :options="months"
+        v-model="monthModel"
+      />
     </div>
     <div :class="`${className}__col`">
-      <UiFormSelect label="Год" :options="years" v-model="yearModel" />
+      <UiFormSelect :label="$t('dateY')" :options="years" v-model="yearModel" />
     </div>
   </div>
 </template>

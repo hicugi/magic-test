@@ -12,7 +12,7 @@ const props = defineProps({
 
 <template>
   <label :class="className">
-    <span>v: {{ props.modelValue }}</span>
+    <span>{{ props.label }}</span>
 
     <input
       :class="`${className}__control`"

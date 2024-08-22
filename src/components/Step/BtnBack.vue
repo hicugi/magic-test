@@ -1,5 +1,5 @@
 <template>
-  <button class="c-stepBtnBack">назад</button>
+  <button class="c-stepBtnBack">{{ $t("back") }}</button>
 </template>
 
 <style lang="sass">

@@ -1,60 +1,62 @@
 <script setup>
 import { computed } from "@vue/reactivity";
 import ThisSelect from "./index.vue";
+
 import preloadImages from "../../../../helpers/preloadImages";
+import { getTranslate } from "../../../../lang";
 
 const className = "ui-formSelectZodiacSelec";
 
 const options = [
   {
-    label: "Овен",
+    label: "zodiacAries",
     value: "aries",
   },
   {
-    label: "Телец",
+    label: "zodiacTaurus",
     value: "taurus",
   },
   {
-    label: "Близнецы",
+    label: "zodiacGemini",
     value: "gemini",
   },
   {
-    label: "Рак",
+    label: "zodiacCancer",
     value: "cancer",
   },
   {
-    label: "Лев",
+    label: "zodiacLeo",
     value: "leo",
   },
   {
-    label: "Дева",
+    label: "zodiacVirgo",
     value: "virgo",
   },
   {
-    label: "Весы",
+    label: "zodiacLibra",
     value: "libra",
   },
   {
-    label: "Скорпион",
+    label: "zodiacScorpio",
     value: "scorpio",
   },
   {
-    label: "Стрелец",
+    label: "zodiacSagittarius",
     value: "sagittarius",
   },
   {
-    label: "Козерог",
+    label: "zodiacCapricorn",
     value: "capricorn",
   },
   {
-    label: "Водолей",
+    label: "zodiacAquarius",
     value: "aquarius",
   },
   {
-    label: "Рыбы",
+    label: "zodiacPisces",
     value: "pisces",
   },
-];
+].map((item) => ({ ...item, label: getTranslate(item.label) }));
 const getImagePath = (value) => `/assets/img/zodiac/${value.toLowerCase()}.svg`;
 
 const props = defineProps({
@@ -66,17 +68,15 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 
 const formattedModelValue = computed({
-  get: () => options.find(({ value }) => value == props.modelValue).label,
+  get: () => options.find(({ value }) => value == props.modelValue).value,
   set: (newValue) => {
-    const itemValue = options.find(({ label }) => label === newValue);
-    emit("update:modelValue", itemValue.value);
+    emit("update:modelValue", newValue);
   },
 });
-const formattedOptions = computed(() => options.map(({ label }) => label));
 
 const iconStyle = computed(() => {
   const value = options.find(
-    ({ label }) => label === formattedModelValue.value
+    ({ value }) => value === formattedModelValue.value
   ).value;
   return { backgroundImage: `url('${getImagePath(value)}')` };
 });
@@ -94,7 +94,7 @@ const handleClick = (() => {
 <template>
   <div :class="className" @click="handleClick">
     <span :class="`${className}__label`" :style="iconStyle" />
-    <ThisSelect v-model="formattedModelValue" :options="formattedOptions" />
+    <ThisSelect v-model="formattedModelValue" :options="options" />
   </div>
 </template>
 

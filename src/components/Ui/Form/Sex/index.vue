@@ -17,7 +17,7 @@ const handleChange = (v) => {
 
 <template>
   <div :class="className">
-    <ThisCheckbox label="female" value="0" @change="handleChange(0)">
+    <ThisCheckbox :label="$t('female')" value="0" @change="handleChange(0)">
       <svg
         :class="`${className}__item_female`"
         width="40"
@@ -34,7 +34,7 @@ const handleChange = (v) => {
         />
       </svg>
     </ThisCheckbox>
-    <ThisCheckbox label="male" value="1" @change="handleChange(1)">
+    <ThisCheckbox :label="$t('male')" value="1" @change="handleChange(1)">
       <svg
         :class="`${className}__item_male`"
         width="32"
