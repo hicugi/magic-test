@@ -1,6 +1,6 @@
 <script setup>
 import Logo from "../Logo.vue";
-import ThisProgress from "./progress.vue";
+import ThisProgress from "./Progress.vue";
 
 const className = "c-stepHeader";
 
