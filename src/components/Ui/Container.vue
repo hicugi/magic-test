@@ -8,7 +8,6 @@ const className = "ui-container";
       <div :class="`${className}-bg`">
         <div :class="`${className}-bg__item`" />
         <div :class="`${className}-bg__item`" />
-        <div :class="`${className}-bg__item`" />
       </div>
 
       <div :class="`${className}__inner`">
@@ -19,7 +18,6 @@ const className = "ui-container";
 </template>
 
 <style lang="sass">
-
 .ui-container
   --border-radius: 26px
   --ui-container-height: 745px
@@ -61,11 +59,10 @@ const className = "ui-container";
         height: 100%
         background: linear-gradient(180deg, #FFFFFF 0%, #EDF1F7 100%)
       &:nth-child(2)
+        width: 100vw
+        height: 100vh
         background: url(/assets/img/bg/full-others.svg) no-repeat center
         background-size: cover
         filter: blur(34px)
-      &:nth-child(3)
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(237, 241, 247, 0.5) 100%)
-        border: 0.874085px solid #FFFFFF
   // end bg
 </style>
