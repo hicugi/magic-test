@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://hicugi.github.io/magic-test/">
-    <img src="public/assets/img/logo.svg" alt="TvMaze" width="176px">
+    <img src="public/assets/img/logo.svg" alt="Magic Test's logo" width="176px">
   </a>
 </p>
 
@@ -20,6 +20,12 @@
 
 [Demo link](https://hicugi.github.io/magic-test/).<br>
 This is a pet project made for proposing to marry to my wife.
+
+## Preview
+
+<video controls="true">
+  <source src="public/preview.mp4" type="video/mp4" />
+</video>
 
 ## Local run
 
